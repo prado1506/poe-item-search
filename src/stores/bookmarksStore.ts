@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import LZString from "lz-string";
 import { storageService } from "@/services/storage";
-import { syncService } from "@/services/syncService";
 import { uniqueId } from "@/utils/uniqueId";
 import { buildTradeUrl } from "@/services/tradeLocation";
 import { debug } from "@/utils/debug";
@@ -41,11 +40,14 @@ interface BookmarksState {
   archiveFolder: (id: string) => Promise<void>;
   unarchiveFolder: (id: string) => Promise<void>;
 
+  moveFolder: (id: string, direction: "up" | "down") => Promise<void>;
+
   // Trade operations
   fetchTradesForFolder: (folderId: string) => Promise<void>;
   createTrade: (folderId: string, trade: Omit<BookmarksTradeStruct, "id">) => Promise<void>;
   updateTrade: (folderId: string, tradeId: string, updates: Partial<BookmarksTradeStruct>) => Promise<void>;
   deleteTrade: (folderId: string, tradeId: string) => Promise<void>;
+  moveTrade: (folderId: string, tradeId: string, direction: "up" | "down") => Promise<void>;
   executeSearch: (folderId: string, tradeId: string) => Promise<void>;
 
   // Import/Export
@@ -59,7 +61,32 @@ interface BookmarksState {
   forceRefetch: () => Promise<void>;
 }
 
-export const useBookmarksStore = create<BookmarksState>((set, get) => ({
+export const useBookmarksStore = create<BookmarksState>((set, get) => {
+  // Listen for cross-tab changes to folders and re-read
+  storageService.onKeyChange(FOLDERS_KEY, async () => {
+    debug.log("[Bookmarks] cross-tab change detected for folders, re-reading");
+    const folders =
+      (await storageService.getValue<BookmarksFolderStruct[]>(FOLDERS_KEY)) ?? [];
+    set({ folders });
+  });
+
+  // Listen for cross-tab changes to any trades key and re-read affected folder
+  storageService.onKeyPrefixChange(TRADES_KEY_PREFIX, async () => {
+    debug.log("[Bookmarks] cross-tab change detected for trades, re-reading expanded folders");
+    // Re-fetch trades for all currently loaded folders
+    const { trades } = get();
+    const newTrades: Record<string, BookmarksTradeStruct[]> = {};
+    for (const folderId of Object.keys(trades)) {
+      const folderTrades =
+        (await storageService.getValue<BookmarksTradeStruct[]>(
+          `${TRADES_KEY_PREFIX}-${folderId}`
+        )) ?? [];
+      newTrades[folderId] = folderTrades;
+    }
+    set({ trades: newTrades });
+  });
+
+  return {
   folders: [],
   trades: {},
   expandedFolders: [],
@@ -114,7 +141,6 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     const newFolders = [...folders, newFolder];
     await storageService.setValue(FOLDERS_KEY, newFolders);
     set({ folders: newFolders });
-    syncService.schedulePush();
   },
 
   updateFolder: async (id, updates) => {
@@ -124,7 +150,6 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     );
     await storageService.setValue(FOLDERS_KEY, newFolders);
     set({ folders: newFolders });
-    syncService.schedulePush();
   },
 
   deleteFolder: async (id) => {
@@ -136,9 +161,6 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     delete newTrades[id];
     set({ folders: newFolders, trades: newTrades });
 
-    // Add tombstone for sync
-    syncService.addTombstone(id, 'folder');
-    syncService.schedulePush();
   },
 
   archiveFolder: async (id) => {
@@ -149,6 +171,18 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
   unarchiveFolder: async (id) => {
     const { updateFolder } = get();
     await updateFolder(id, { archivedAt: null });
+  },
+
+  moveFolder: async (id, direction) => {
+    const { folders } = get();
+    const index = folders.findIndex((f) => f.id === id);
+    if (index === -1) return;
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= folders.length) return;
+    const newFolders = [...folders];
+    [newFolders[index], newFolders[targetIndex]] = [newFolders[targetIndex], newFolders[index]];
+    await storageService.setValue(FOLDERS_KEY, newFolders);
+    set({ folders: newFolders });
   },
 
   fetchTradesForFolder: async (folderId) => {
@@ -177,7 +211,6 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     set((state) => ({
       trades: { ...state.trades, [folderId]: newFolderTrades },
     }));
-    syncService.schedulePush();
   },
 
   updateTrade: async (folderId, tradeId, updates) => {
@@ -190,7 +223,6 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     set((state) => ({
       trades: { ...state.trades, [folderId]: newFolderTrades },
     }));
-    syncService.schedulePush();
   },
 
   deleteTrade: async (folderId, tradeId) => {
@@ -202,9 +234,21 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
       trades: { ...state.trades, [folderId]: newFolderTrades },
     }));
 
-    // Add tombstone for sync
-    syncService.addTombstone(tradeId, 'bookmark');
-    syncService.schedulePush();
+  },
+
+  moveTrade: async (folderId, tradeId, direction) => {
+    const { trades } = get();
+    const folderTrades = trades[folderId] ?? [];
+    const index = folderTrades.findIndex((t) => t.id === tradeId);
+    if (index === -1) return;
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= folderTrades.length) return;
+    const newFolderTrades = [...folderTrades];
+    [newFolderTrades[index], newFolderTrades[targetIndex]] = [newFolderTrades[targetIndex], newFolderTrades[index]];
+    await storageService.setValue(`${TRADES_KEY_PREFIX}-${folderId}`, newFolderTrades);
+    set((state) => ({
+      trades: { ...state.trades, [folderId]: newFolderTrades },
+    }));
   },
 
   executeSearch: async (folderId, tradeId) => {
@@ -357,4 +401,5 @@ export const useBookmarksStore = create<BookmarksState>((set, get) => ({
     set({ hasFetched: false });
     await get().fetchFolders();
   },
-}));
+};
+});

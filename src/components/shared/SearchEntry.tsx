@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button, TrashIcon, RefreshIcon, BookmarkIcon, SaveIcon } from "@/components/ui";
+import { Button, TrashIcon, RefreshIcon, BookmarkIcon, SaveIcon, ChevronUpIcon, ChevronDownIcon } from "@/components/ui";
 import type { TradeSiteVersion, TradeSearchQuery } from "@/types/tradeLocation";
 import type { BookmarksFolderStruct } from "@/types/bookmarks";
 import { getSortLabel, formatSortBadge } from "@/utils/sortLabel";
@@ -42,6 +42,8 @@ export interface SearchEntryProps {
   onBookmark?: (folderId: string) => void;
   onCreateFolder?: (title: string) => Promise<string>;
   onUpdate?: () => void;
+  onMoveUp?: () => void;
+  onMoveDown?: () => void;
 }
 
 export function SearchEntry({
@@ -61,6 +63,8 @@ export function SearchEntry({
   onBookmark,
   onCreateFolder,
   onUpdate,
+  onMoveUp,
+  onMoveDown,
 }: SearchEntryProps) {
   const [showFolderPicker, setShowFolderPicker] = useState(false);
   const bookmarkButtonRef = useRef<HTMLButtonElement>(null);
@@ -82,7 +86,7 @@ export function SearchEntry({
       <button
         onClick={handleClick}
         disabled={isExecuting}
-        className="w-full flex items-start gap-3 px-3 py-2 hover:bg-poe-gray transition-colors text-left disabled:opacity-50 disabled:cursor-wait"
+        className="relative w-full flex items-start gap-3 px-3 py-2 hover:bg-poe-gray transition-colors text-left disabled:opacity-50 disabled:cursor-wait"
       >
         {previewImageUrl && (
           <div className="shrink-0 w-8 h-8 rounded overflow-hidden bg-poe-dark">
@@ -134,7 +138,7 @@ export function SearchEntry({
             )}
           </div>
         </div>
-        <div className="relative flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute right-0 top-0 bottom-0 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-l from-poe-gray from-60% to-transparent px-2">
           {isExecuting ? (
             <RefreshIcon className="w-4 h-4 text-poe-gold animate-spin" />
           ) : (
@@ -166,6 +170,34 @@ export function SearchEntry({
                   title="Update with current search"
                 >
                   <SaveIcon className="w-4 h-4" />
+                </Button>
+              )}
+              {onMoveUp && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onMoveUp();
+                  }}
+                  title="Move up"
+                >
+                  <ChevronUpIcon className="w-4 h-4" />
+                </Button>
+              )}
+              {onMoveDown && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    onMoveDown();
+                  }}
+                  title="Move down"
+                >
+                  <ChevronDownIcon className="w-4 h-4" />
                 </Button>
               )}
               <Button

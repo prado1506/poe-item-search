@@ -6,7 +6,6 @@ import { usePanelStore } from "@/stores/panelStore";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { initSearchInterceptor } from "@/services/searchInterceptor";
 import { initSentry, captureException } from "@/services/sentry";
-import { syncService } from "@/services/syncService";
 import { injectTierDropdowns, observeFilterChanges, injectStatIdExtractor } from "@/services/tierInjector";
 import { getExtensionUrl } from "@/utils/extensionApi";
 import { debug } from "@/utils/debug";
@@ -15,7 +14,7 @@ import { App } from "./App";
 // Import CSS as string for Shadow DOM injection
 import styles from "@/index.css?inline";
 
-const version = "1.3.0";
+const version = __APP_VERSION__;
 
 /**
  * Inject the interceptor script into the page's MAIN world.
@@ -114,12 +113,6 @@ async function initialize() {
 
     // Initialize interceptor listener in content script
     initSearchInterceptor();
-
-    // Initialize cloud sync
-    syncService.init().catch((e) => {
-      debug.error("[Sync] Init failed:", e);
-      captureException(e, { context: "sync-init" });
-    });
 
     await waitForTradePage();
 

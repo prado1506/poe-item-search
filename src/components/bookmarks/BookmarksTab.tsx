@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useBookmarksStore } from "@/stores/bookmarksStore";
 import { useHistoryStore } from "@/stores/historyStore";
-import { useSyncStore } from "@/stores/syncStore";
 import {
   Button,
   PlusIcon,
   FolderIcon,
   ChevronDownIcon,
+  ChevronUpIcon,
   ChevronRightIcon,
   TrashIcon,
   ArchiveIcon,
@@ -34,22 +34,7 @@ export function BookmarksTab() {
     createFolder,
     updateFolder,
     importFolder,
-    forceRefetch,
   } = useBookmarksStore();
-
-  const { hasNewData, clearNewDataIndicator } = useSyncStore();
-
-  // Refetch bookmarks when cloud sync detects new data
-  useEffect(() => {
-    if (hasNewData) {
-      forceRefetch();
-    }
-  }, [hasNewData, forceRefetch]);
-
-  // Clear sync indicator when user views bookmarks tab
-  useEffect(() => {
-    clearNewDataIndicator();
-  }, [clearNewDataIndicator]);
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isBookmarkModalOpen, setIsBookmarkModalOpen] = useState(false);
@@ -208,8 +193,14 @@ export function BookmarksTab() {
           </div>
         ) : (
           <ul className="divide-y divide-poe-gray">
-            {visibleFolders.map((folder) => (
-              <BookmarkFolder key={folder.id} folder={folder} onRename={() => openRenameModal(folder)} />
+            {visibleFolders.map((folder, index) => (
+              <BookmarkFolder
+                key={folder.id}
+                folder={folder}
+                onRename={() => openRenameModal(folder)}
+                isFirst={index === 0}
+                isLast={index === visibleFolders.length - 1}
+              />
             ))}
           </ul>
         )}
@@ -336,10 +327,12 @@ export function BookmarksTab() {
 interface BookmarkFolderProps {
   folder: BookmarksFolderStruct;
   onRename: () => void;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
-function BookmarkFolder({ folder, onRename }: BookmarkFolderProps) {
-  const { trades, isExecuting, expandedFolders, toggleFolderExpanded, fetchTradesForFolder, deleteFolder, archiveFolder, unarchiveFolder, exportFolder } =
+function BookmarkFolder({ folder, onRename, isFirst, isLast }: BookmarkFolderProps) {
+  const { trades, isExecuting, expandedFolders, toggleFolderExpanded, fetchTradesForFolder, deleteFolder, archiveFolder, unarchiveFolder, exportFolder, moveFolder, moveTrade } =
     useBookmarksStore();
   const isExpanded = expandedFolders.includes(folder.id!);
   const [exportedRecently, setExportedRecently] = useState(false);
@@ -374,6 +367,32 @@ function BookmarkFolder({ folder, onRename }: BookmarkFolderProps) {
         </span>
         <div className="flex-1" />
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          {!isFirst && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                moveFolder(folder.id!, "up");
+              }}
+              title="Move up"
+            >
+              <ChevronUpIcon className="w-4 h-4" />
+            </Button>
+          )}
+          {!isLast && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                moveFolder(folder.id!, "down");
+              }}
+              title="Move down"
+            >
+              <ChevronDownIcon className="w-4 h-4" />
+            </Button>
+          )}
           <Button
             variant="ghost"
             size="sm"
@@ -430,12 +449,16 @@ function BookmarkFolder({ folder, onRename }: BookmarkFolderProps) {
               No bookmarks in this folder
             </li>
           ) : (
-            folderTrades.map((trade) => (
+            folderTrades.map((trade, index) => (
               <BookmarkTrade
                 key={trade.id}
                 folderId={folder.id!}
                 trade={trade}
                 isExecuting={isExecuting === trade.id}
+                isFirst={index === 0}
+                isLast={index === folderTrades.length - 1}
+                onMoveUp={() => moveTrade(folder.id!, trade.id!, "up")}
+                onMoveDown={() => moveTrade(folder.id!, trade.id!, "down")}
               />
             ))
           )}
@@ -449,9 +472,13 @@ interface BookmarkTradeProps {
   folderId: string;
   trade: BookmarksTradeStruct;
   isExecuting: boolean;
+  isFirst: boolean;
+  isLast: boolean;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
 }
 
-function BookmarkTrade({ folderId, trade, isExecuting }: BookmarkTradeProps) {
+function BookmarkTrade({ folderId, trade, isExecuting, isFirst, isLast, onMoveUp, onMoveDown }: BookmarkTradeProps) {
   const { deleteTrade, executeSearch } = useBookmarksStore();
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [hasCurrentSearch, setHasCurrentSearch] = useState(false);
@@ -491,6 +518,8 @@ function BookmarkTrade({ folderId, trade, isExecuting }: BookmarkTradeProps) {
         onExecute={() => executeSearch(folderId, trade.id!)}
         onDelete={() => deleteTrade(folderId, trade.id!)}
         onUpdate={hasCurrentSearch ? () => setIsUpdateModalOpen(true) : undefined}
+        onMoveUp={!isFirst ? onMoveUp : undefined}
+        onMoveDown={!isLast ? onMoveDown : undefined}
       />
       <BookmarkModal
         isOpen={isUpdateModalOpen}

@@ -1,8 +1,13 @@
 import { addRegexToStats } from "./stat.js";
 import { buildTypeFilters } from "./itemClass.js";
+import { normalizeItemText } from "./itemNormalizer.js";
 
 export function getSearchQuery(item, stats) {
   const query = {};
+
+  // Normalize 0.5+ in-game item text (roll ranges + modifier headers) to the
+  // legacy line format the matcher understands. No-op for legacy/API text.
+  item = normalizeItemText(item);
 
   const regexStats = addRegexToStats(stats);
   const unique = matchUniqueItem(item);

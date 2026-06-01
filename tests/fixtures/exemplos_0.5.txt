@@ -1,0 +1,1778 @@
+Item Class: Amulets
+Rarity: Magic
+Magpie's Azure Amulet of Excitement
+--------
+Requires: Level 8
+--------
+Item Level: 10
+--------
+{ Implicit Modifier — Mana }
+30(20-30)% increased Mana Regeneration Rate
+--------
+{ Prefix Modifier "Magpie's" (Tier: 3) }
+10(8-11)% increased Rarity of Items found
+{ Suffix Modifier "of Excitement" (Tier: 6) — Mana }
+18(10-19)% increased Mana Regeneration Rate
+
+Item Class: Spears
+Rarity: Rare
+Plague Edge
+Hunting Spear
+--------
+Physical Damage: 15-25 (augmented)
+Elemental Damage: 5-10 (fire), 3-5 (cold), 1-18 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 10, 9 Str, 17 Dex
+--------
+Sockets: S 
+--------
+Item Level: 12
+--------
+Adds 3 to 5 Cold Damage (rune)
+--------
+{ Implicit Modifier — Attack }
+22(15-25)% chance to Maim on Hit
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Smouldering" (Tier: 9) — Damage, Elemental, Fire, Attack }
+Adds 5(4-6) to 10(7-10) Fire Damage
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 18(13-19) Lightning Damage
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 5(4-6) to 8(7-11) Physical Damage
+{ Suffix Modifier "of the Pugilist" (Tier: 6) }
+Causes 23(21-30)% increased Stun Buildup
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+{ Suffix Modifier "of Victory" (Tier: 7) — Life }
+Gain 9(7-9) Life per enemy killed
+
+Item Class: Spears
+Rarity: Rare
+Plague Edge
+Hunting Spear
+--------
+Quality: +16% (augmented)
+Physical Damage: 17-29 (augmented)
+Elemental Damage: 5-10 (fire), 3-5 (cold), 1-18 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 10, 9 Str, 17 Dex
+--------
+Sockets: S 
+--------
+Item Level: 12
+--------
+Adds 3 to 5 Cold Damage (rune)
+--------
+{ Implicit Modifier — Attack }
+22(15-25)% chance to Maim on Hit
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Smouldering" (Tier: 9) — Damage, Elemental, Fire, Attack }
+Adds 5(4-6) to 10(7-10) Fire Damage
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 18(13-19) Lightning Damage
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 5(4-6) to 8(7-11) Physical Damage
+{ Suffix Modifier "of the Pugilist" (Tier: 6) }
+Causes 23(21-30)% increased Stun Buildup
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+{ Suffix Modifier "of Victory" (Tier: 7) — Life }
+Gain 9(7-9) Life per enemy killed
+
+Item Class: Body Armours
+Rarity: Magic
+Sanguine Pathfinder Coat of Reinforced Skin
+--------
+Evasion Rating: 96
+--------
+Requires: Level 12, 21 Dex
+--------
+Item Level: 18
+--------
+{ Prefix Modifier "Sanguine" (Tier: 11) — Life }
++35(30-39) to maximum Life
+{ Suffix Modifier "of Reinforced Skin" (Tier: 9) }
++27(12-29) to Stun Threshold
+
+Item Class: Boots
+Rarity: Magic
+Hale Embossed Boots
+--------
+Evasion Rating: 63
+--------
+Requires: Level 16, 23 Dex
+--------
+Item Level: 18
+--------
+{ Prefix Modifier "Hale" (Tier: 9) — Life }
++10(10-19) to maximum Life
+
+Item Class: Amulets
+Rarity: Unique
+Rondel of Fragility
+Lunar Amulet
+--------
+Requires: Level 14
+--------
+Item Level: 17
+--------
+{ Implicit Modifier — Energy Shield }
++20(20-30) to maximum Energy Shield
+--------
+{ Unique Modifier — Elemental, Fire, Cold, Lightning, Resistance }
+-30% to all Elemental Resistances
+{ Unique Modifier — Speed }
+26(15-30)% increased Skill Speed
+{ Unique Modifier — Critical }
+24(20-30)% increased Critical Hit Chance
+{ Unique Modifier — Damage }
+45(30-50)% increased Damage
+--------
+Fanatics are the most dangerous enemy,
+for they care not for their own survival.
+
+Item Class: Spears
+Rarity: Unique
+Chainsting
+Hunting Spear
+--------
+Physical Damage: 24-40 (augmented)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 10, 9 Str, 17 Dex
+--------
+Item Level: 18
+--------
+{ Implicit Modifier — Attack }
+17(15-25)% chance to Maim on Hit
+--------
+Grants Skill: Spear Throw
+--------
+{ Unique Modifier — Damage, Physical, Attack }
+Adds 14(13-17) to 23(22-28) Physical Damage
+{ Unique Modifier — Attack, Speed }
+10% increased Attack Speed
+{ Unique Modifier }
+29(20-30)% increased Projectile Speed with this Weapon
+{ Unique Modifier — Attack }
++118(100-150) to Accuracy Rating
+{ Unique Modifier }
+All Damage from Hits with this Weapon Contributes to Pin Buildup — Unscalable Value
+--------
+The Sacred Hunt ends with mercy.
+
+Item Class: Spears
+Rarity: Magic
+Chilled Winged Spear of Victory
+--------
+Physical Damage: 12-22
+Cold Damage: 5-8 (cold)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.70
+--------
+Requires: Level 16, 12 Str, 25 Dex
+--------
+Item Level: 18
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Chilled" (Tier: 9) — Damage, Elemental, Cold, Attack }
+Adds 5(3-5) to 8(6-9) Cold Damage
+{ Suffix Modifier "of Victory" (Tier: 7) — Life }
+Gain 8(7-9) Life per enemy killed
+
+Item Class: Helmets
+Rarity: Magic
+Shadowy Hooded Mask of the Squall
+--------
+Evasion Rating: 58 (augmented)
+Energy Shield: 24 (augmented)
+--------
+Requires: Level 16, 15 Dex, 15 Int
+--------
+Item Level: 19
+--------
+{ Prefix Modifier "Shadowy" (Tier: 7) — Evasion, Energy Shield }
+26(15-26)% increased Evasion and Energy Shield
+{ Suffix Modifier "of the Squall" (Tier: 7) — Elemental, Lightning, Resistance }
++15(11-15)% to Lightning Resistance
+
+Item Class: Boots
+Rarity: Magic
+Azure Threaded Shoes
+--------
+Evasion Rating: 35
+Energy Shield: 15
+--------
+Requires: Level 16, 14 Dex, 14 Int
+--------
+Item Level: 20
+--------
+{ Prefix Modifier "Azure" (Tier: 7) — Mana }
++26(25-34) to maximum Mana
+
+Item Class: Rings
+Rarity: Normal
+Topaz Ring
+--------
+Requires: Level 16
+--------
+Item Level: 19
+--------
+{ Implicit Modifier — Elemental, Lightning, Resistance }
++22(20-30)% to Lightning Resistance
+
+Item Class: Rings
+Rarity: Normal
+Topaz Ring
+--------
+Requires: Level 16
+--------
+Item Level: 19
+--------
+{ Implicit Modifier — Elemental, Lightning, Resistance }
++20(20-30)% to Lightning Resistance
+
+Item Class: Rings
+Rarity: Magic
+Topaz Ring of Victory
+--------
+Requires: Level 16
+--------
+Item Level: 19
+--------
+{ Implicit Modifier — Elemental, Lightning, Resistance }
++20(20-30)% to Lightning Resistance
+--------
+{ Suffix Modifier "of Victory" (Tier: 5) — Life }
+Gain 9(7-9) Life per enemy killed
+
+Item Class: Spears
+Rarity: Magic
+Snapping War Spear of Absorption
+--------
+Quality: +7% (augmented)
+Physical Damage: 17-29 (augmented)
+Lightning Damage: 2-29 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.60
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Item Level: 21
+--------
+{ Implicit Modifier }
+33(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 29(20-30) Lightning Damage
+{ Suffix Modifier "of Absorption" (Tier: 8) — Mana }
+Gain 2(2-3) Mana per enemy killed
+
+Item Class: Spears
+Rarity: Magic
+Polished War Spear of Ease
+--------
+Physical Damage: 24-38 (augmented)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.75 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Item Level: 21
+--------
+{ Implicit Modifier }
+35(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Polished" (Tier: 7) — Damage, Physical, Attack }
+Adds 8(6-9) to 11(11-16) Physical Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+9(8-10)% increased Attack Speed
+
+Item Class: Spears
+Rarity: Magic
+Frosted War Spear of Skill
+--------
+Physical Damage: 16-27
+Cold Damage: 2-3 (cold)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Item Level: 27
+--------
+{ Implicit Modifier }
+28(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Frosted" (Tier: 10) — Damage, Elemental, Cold, Attack }
+Adds 2(1-2) to 3(3-4) Cold Damage
+{ Suffix Modifier "of Skill" (Tier: 8) — Attack, Speed }
+7(5-7)% increased Attack Speed
+
+Item Class: Spears
+Rarity: Rare
+Brimstone Edge
+War Spear
+--------
+Physical Damage: 35-55 (augmented)
+Lightning Damage: 2-25 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.75 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Item Level: 21
+--------
+{ Implicit Modifier }
+35(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Polished" (Tier: 7) — Damage, Physical, Attack }
+Adds 8(6-9) to 11(11-16) Physical Damage
+{ Prefix Modifier "Heavy" (Tier: 8) — Damage, Physical, Attack }
+46(40-49)% increased Physical Damage
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 25(20-30) Lightning Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+9(8-10)% increased Attack Speed
+{ Suffix Modifier "of the Brawler" (Tier: 5) }
+Causes 39(31-40)% increased Stun Buildup
+{ Suffix Modifier "of Dazing" (Tier: 5) }
+16(14-16)% increased Stun Duration
+
+Item Class: Spears
+Rarity: Rare
+Plague Edge
+Hunting Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 18-30 (augmented)
+Elemental Damage: 5-10 (fire), 3-5 (cold), 1-18 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 10, 9 Str, 17 Dex
+--------
+Sockets: S 
+--------
+Item Level: 12
+--------
+Adds 3 to 5 Cold Damage (rune)
+--------
+{ Implicit Modifier — Attack }
+22(15-25)% chance to Maim on Hit
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Smouldering" (Tier: 9) — Damage, Elemental, Fire, Attack }
+Adds 5(4-6) to 10(7-10) Fire Damage
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 18(13-19) Lightning Damage
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 5(4-6) to 8(7-11) Physical Damage
+{ Suffix Modifier "of the Pugilist" (Tier: 6) }
+Causes 23(21-30)% increased Stun Buildup
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+{ Suffix Modifier "of Victory" (Tier: 7) — Life }
+Gain 9(7-9) Life per enemy killed
+
+Item Class: Spears
+Rarity: Rare
+Brimstone Edge
+War Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 42-67 (augmented)
+Lightning Damage: 2-25 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.75 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Sockets: S 
+--------
+Item Level: 21
+--------
+{ Implicit Modifier }
+35(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Polished" (Tier: 7) — Damage, Physical, Attack }
+Adds 8(6-9) to 11(11-16) Physical Damage
+{ Prefix Modifier "Heavy" (Tier: 8) — Damage, Physical, Attack }
+46(40-49)% increased Physical Damage
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 25(20-30) Lightning Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+9(8-10)% increased Attack Speed
+{ Suffix Modifier "of the Brawler" (Tier: 5) }
+Causes 39(31-40)% increased Stun Buildup
+{ Suffix Modifier "of Dazing" (Tier: 5) }
+16(14-16)% increased Stun Duration
+
+Item Class: Spears
+Rarity: Rare
+Brimstone Edge
+War Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 42-67 (augmented)
+Lightning Damage: 3-35 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.75 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Sockets: S 
+--------
+Item Level: 21
+--------
+Adds 1 to 10 Lightning Damage (rune)
+--------
+{ Implicit Modifier }
+35(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Polished" (Tier: 7) — Damage, Physical, Attack }
+Adds 8(6-9) to 11(11-16) Physical Damage
+{ Prefix Modifier "Heavy" (Tier: 8) — Damage, Physical, Attack }
+46(40-49)% increased Physical Damage
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 25(20-30) Lightning Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+9(8-10)% increased Attack Speed
+{ Suffix Modifier "of Dazing" (Tier: 5) }
+16(14-16)% increased Stun Duration
+{ Suffix Modifier "of the Veil" }
+Desecrated Suffix
+
+Item Class: Spears
+Rarity: Rare
+Vortex Edge
+War Spear
+--------
+Quality: +8% (augmented)
+Physical Damage: 26-43 (augmented)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.60
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Item Level: 24
+--------
+{ Implicit Modifier }
+27(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Precise" (Tier: 9) — Attack }
++24(11-32) to Accuracy Rating
+{ Prefix Modifier "Infusing" (Tier: 5) — Damage, Elemental, Fire, Cold, Lightning }
+51(36-52)% increased Elemental Damage with Attacks
+{ Prefix Modifier "Heavy" (Tier: 8) — Damage, Physical, Attack }
+49(40-49)% increased Physical Damage
+{ Suffix Modifier "of the Pugilist" (Tier: 6) }
+Causes 23(21-30)% increased Stun Buildup
+
+Item Class: Body Armours
+Rarity: Rare
+Apocalypse Cloak
+Vagabond Armour
+--------
+Armour: 141 (augmented)
+Evasion Rating: 114 (augmented)
+--------
+Requires: Level 16, 17 Str, 17 Dex
+--------
+Item Level: 22
+--------
+{ Prefix Modifier "Thug's" (Tier: 5) — Life, Armour, Evasion }
+14(14-20)% increased Armour and Evasion
++12(11-19) to maximum Life
+{ Prefix Modifier "Swordsman's" (Tier: 6) — Armour, Evasion }
++5(3-5) to Armour
++2(2-3) to Evasion Rating
+9(6-13)% increased Armour and Evasion
+{ Prefix Modifier "Pliant" (Tier: 7) — Armour, Evasion }
++27(17-46) to Armour
++20(11-41) to Evasion Rating
+{ Suffix Modifier "of the Seal" (Tier: 8) — Elemental, Cold, Resistance }
++10(6-10)% to Cold Resistance
+{ Suffix Modifier "of the Starfish" (Tier: 8) — Life }
+4.6(4.1-6) Life Regeneration per second
+{ Suffix Modifier "of the Lost" (Tier: 6) — Chaos, Resistance }
++6(4-7)% to Chaos Resistance
+
+Item Class: Spears
+Rarity: Rare
+Carrion Edge
+Forked Spear
+--------
+Physical Damage: 13-38
+Fire Damage: 2-3 (fire)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.55
+--------
+Requires: Level 26, 17 Str, 38 Dex
+--------
+Item Level: 27
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Heated" (Tier: 10) — Damage, Elemental, Fire, Attack }
+Adds 2(1-2) to 3(3-5) Fire Damage
+{ Suffix Modifier "of Osmosis" (Tier: 7) — Mana }
+Gain 5(4-5) Mana per enemy killed
+{ Suffix Modifier "of the Fox" (Tier: 6) — Attribute }
++14(13-16) to Dexterity
+{ Suffix Modifier "of Rejuvenation" (Tier: 4) — Life, Attack }
+Grants 2 Life per Enemy Hit
+
+Item Class: Spears
+Rarity: Magic
+Smoking Barbed Spear
+--------
+Physical Damage: 20-38
+Fire Damage: 8-17 (fire)
+Critical Hit Chance: 6.00%
+Attacks per Second: 1.50
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 15(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Smoking" (Tier: 8) — Damage, Elemental, Fire, Attack }
+Adds 8(7-11) to 17(13-19) Fire Damage
+
+Item Class: Spears
+Rarity: Magic
+Honed Barbed Spear of the Locust
+--------
+Physical Damage: 30-56 (augmented)
+Critical Hit Chance: 6.00%
+Attacks per Second: 1.50
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 18(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Honed" (Tier: 6) — Damage, Physical, Attack }
+Adds 10(8-12) to 18(14-21) Physical Damage
+{ Suffix Modifier "of the Locust" (Tier: 4) — Life, Physical, Attack }
+Leeches 6.45(6-6.9)% of Physical Damage as Life
+
+Item Class: Spears
+Rarity: Magic
+Smouldering Barbed Spear of Skill
+--------
+Physical Damage: 20-38
+Fire Damage: 6-8 (fire)
+Critical Hit Chance: 6.00%
+Attacks per Second: 1.57 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 33
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 13(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Smouldering" (Tier: 9) — Damage, Elemental, Fire, Attack }
+Adds 6(4-6) to 8(7-10) Fire Damage
+{ Suffix Modifier "of Skill" (Tier: 8) — Attack, Speed }
+5(5-7)% increased Attack Speed
+
+Item Class: Spears
+Rarity: Rare
+Mind Edge
+Barbed Spear
+--------
+Physical Damage: 20-38
+Lightning Damage: 2-48 (lightning)
+Critical Hit Chance: 8.37% (augmented)
+Attacks per Second: 1.74 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 48(36-52) Lightning Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.37(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Renown" (Tier: 5) — Attack, Speed }
+16(14-16)% increased Attack Speed
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 18(10-18) Life per enemy killed
+
+Item Class: Spears
+Rarity: Rare
+Mind Edge
+Barbed Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 24-46 (augmented)
+Lightning Damage: 2-48 (lightning)
+Critical Hit Chance: 8.37% (augmented)
+Attacks per Second: 1.74 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 48(36-52) Lightning Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.37(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Renown" (Tier: 5) — Attack, Speed }
+16(14-16)% increased Attack Speed
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 18(10-18) Life per enemy killed
+
+Item Class: Spears
+Rarity: Rare
+Mind Edge
+Barbed Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 24-46 (augmented)
+Lightning Damage: 3-68 (lightning)
+Critical Hit Chance: 8.37% (augmented)
+Attacks per Second: 1.74 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Sockets: S 
+--------
+Item Level: 35
+--------
+Adds 1 to 20 Lightning Damage (rune)
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 48(36-52) Lightning Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.37(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Renown" (Tier: 5) — Attack, Speed }
+16(14-16)% increased Attack Speed
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 18(10-18) Life per enemy killed
+
+Item Class: Spears
+Rarity: Rare
+Mind Edge
+Barbed Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 24-46 (augmented)
+Elemental Damage: 1-4 (fire), 3-68 (lightning)
+Critical Hit Chance: 8.37% (augmented)
+Attacks per Second: 1.74 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Sockets: S 
+--------
+Item Level: 35
+--------
+Adds 1 to 20 Lightning Damage (rune)
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 48(36-52) Lightning Damage
+{ Prefix Modifier "Heated" (Tier: 10) — Damage, Elemental, Fire, Attack }
+Adds 1(1-2) to 4(3-5) Fire Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.37(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Renown" (Tier: 5) — Attack, Speed }
+16(14-16)% increased Attack Speed
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 18(10-18) Life per enemy killed
+
+Item Class: Rings
+Rarity: Normal
+Amethyst Ring
+--------
+Requires: Level 20
+--------
+Item Level: 34
+--------
+{ Implicit Modifier — Chaos, Resistance }
++8(7-13)% to Chaos Resistance
+
+Item Class: Spears
+Rarity: Rare
+Brimstone Edge
+War Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 42-67 (augmented)
+Lightning Damage: 3-35 (lightning)
+Critical Hit Chance: 6.05% (augmented)
+Attacks per Second: 1.75 (augmented)
+--------
+Requires: Level 21, 14 Str, 31 Dex
+--------
+Sockets: S 
+--------
+Item Level: 21
+--------
+Adds 1 to 10 Lightning Damage (rune)
+--------
+{ Implicit Modifier }
+35(25-35)% increased Projectile Speed with this Weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Polished" (Tier: 7) — Damage, Physical, Attack }
+Adds 8(6-9) to 11(11-16) Physical Damage
+{ Prefix Modifier "Heavy" (Tier: 8) — Damage, Physical, Attack }
+46(40-49)% increased Physical Damage
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 25(20-30) Lightning Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+9(8-10)% increased Attack Speed
+{ Suffix Modifier "of Dazing" (Tier: 5) }
+16(14-16)% increased Stun Duration
+{ Desecrated Suffix Modifier "of Menace" (Tier: 6) — Attack, Critical }
++1.05(1.01-1.5)% to Critical Hit Chance
+
+Item Class: Spears
+Rarity: Rare
+Soul Edge
+Barbed Spear
+--------
+Physical Damage: 32-59 (augmented)
+Critical Hit Chance: 6.00%
+Attacks per Second: 1.50
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 10(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Honed" (Tier: 6) — Damage, Physical, Attack }
+Adds 12(8-12) to 21(14-21) Physical Damage
+{ Prefix Modifier "Focused" (Tier: 7) — Attack }
++70(61-84) to Accuracy Rating
+{ Suffix Modifier "of Rage" (Tier: 4) — Damage, Attack, Critical }
++16(14-16)% to Critical Damage Bonus
+{ Suffix Modifier "of Stunning" (Tier: 4) }
+17(17-19)% increased Stun Duration
+{ Suffix Modifier "of the Boxer" (Tier: 4) }
+Causes 45(41-50)% increased Stun Buildup
+
+Item Class: Spears
+Rarity: Normal
+Barbed Spear
+--------
+Physical Damage: 20-38
+Critical Hit Chance: 6.00%
+Attacks per Second: 1.50
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+
+Item Class: Helmets
+Rarity: Rare
+Rift Crown
+Runeforged Hooded Mask
+--------
+Quality: +4% (augmented)
+Evasion Rating: 75 (augmented)
+Energy Shield: 31 (augmented)
+Runic Ward: 36 (augmented)
+--------
+Requires: Level 16, 15 Dex, 15 Int
+--------
+Sockets: S 
+--------
+Item Level: 21
+--------
++14% to Fire Resistance (rune)
+--------
+{ Prefix Modifier "Kingfisher's" (Tier: 5) — Mana, Evasion, Energy Shield }
+15(14-20)% increased Evasion and Energy Shield
++15(9-16) to maximum Mana
+{ Crafted Prefix Modifier "Ethereal" (Tier: 6) — Evasion, Energy Shield }
+42(27-42)% increased Evasion and Energy Shield
+{ Suffix Modifier "of Havoc" (Tier: 4) — Critical }
+15(15-19)% increased Critical Hit Chance
+
+Item Class: Helmets
+Rarity: Rare
+Empyrean Horn
+Hunter Hood
+--------
+Evasion Rating: 158
+--------
+Requires: Level 33, 48 Dex
+--------
+Item Level: 36
+--------
+{ Prefix Modifier "Stalwart" (Tier: 7) — Life }
++47(40-59) to maximum Life
+{ Suffix Modifier "of Deflecting" (Tier: 5) — Evasion }
+Gain Deflection Rating equal to 8(8-11)% of Evasion Rating
+{ Suffix Modifier "of the Troll" (Tier: 3) — Life }
+10.8(9.1-13) Life Regeneration per second
+{ Suffix Modifier "of the Kiln" (Tier: 5) — Elemental, Fire, Resistance }
++25(21-25)% to Fire Resistance
+
+Item Class: Boots
+Rarity: Rare
+Rapture Road
+Runeforged Lattice Sandals
+--------
+Energy Shield: 55 (augmented)
+Runic Ward: 26
+--------
+Requires: Level 17, 23 Int
+--------
+Item Level: 22
+--------
+{ Prefix Modifier "Beryl" (Tier: 9) — Mana }
++13(10-14) to maximum Mana
+{ Prefix Modifier "Glittering" (Tier: 5) — Energy Shield }
++28(25-30) to maximum Energy Shield
+{ Prefix Modifier "Sprinter's" (Tier: 5) — Speed }
+15% increased Movement Speed
+{ Suffix Modifier "of Iron Skin" (Tier: 8) }
++53(50-72) to Stun Threshold
+{ Suffix Modifier "of the Prodigy" (Tier: 6) — Attribute }
++16(13-16) to Intelligence
+{ Suffix Modifier "of the Cloud" (Tier: 8) — Elemental, Lightning, Resistance }
++7(6-10)% to Lightning Resistance
+
+Item Class: Boots
+Rarity: Rare
+Empyrean March
+Frayed Shoes
+--------
+Evasion Rating: 17 (augmented)
+Energy Shield: 12 (augmented)
+--------
+Requires: Level 16
+--------
+Item Level: 35
+--------
+{ Prefix Modifier "Sprinter's" (Tier: 5) — Speed }
+15% increased Movement Speed
+{ Prefix Modifier "Psychic" (Tier: 5) }
+16(14-20)% increased Evasion and Energy Shield
++22(14-24) to Stun Threshold
+{ Suffix Modifier "of the Lynx" (Tier: 7) — Attribute }
++12(9-12) to Dexterity
+{ Suffix Modifier "of Heating" (Tier: 5) — Elemental, Cold, Ailment }
+36(36-40)% reduced Freeze Duration on you
+
+Item Class: Gloves
+Rarity: Rare
+Bramble Palm
+Spined Bracers
+--------
+Evasion Rating: 79
+--------
+Requires: Level 33, 42 Dex
+--------
+Item Level: 37
+--------
+{ Prefix Modifier "Sanguine" (Tier: 7) — Life }
++36(30-39) to maximum Life
+{ Prefix Modifier "Beryl" (Tier: 9) — Mana }
++14(10-14) to maximum Mana
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 3(2-3) to 4(4-6) Physical Damage to Attacks
+{ Suffix Modifier "of the Locust" (Tier: 4) — Life, Physical, Attack }
+Leech 6.9(6-6.9)% of Physical Attack Damage as Life
+{ Suffix Modifier "of Ease" (Tier: 3) — Attack, Speed }
+9(8-10)% increased Attack Speed
+{ Suffix Modifier "of the Cloud" (Tier: 8) — Elemental, Lightning, Resistance }
++8(6-10)% to Lightning Resistance
+
+Item Class: Gloves
+Rarity: Rare
+Damnation Hold
+Runeforged Sectioned Bracers
+--------
+Quality: +6% (augmented)
+Evasion Rating: 84 (augmented)
+Runic Ward: 23 (augmented)
+--------
+Requires: Level 28, 36 Dex
+--------
+Sockets: S 
+--------
+Item Level: 29
+--------
+16% increased Armour, Evasion and Energy Shield (rune)
+--------
+{ Prefix Modifier "Smoking" (Tier: 7) — Damage, Elemental, Fire, Attack }
+Adds 8(6-8) to 13(10-13) Fire damage to Attacks
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 2(2-3) to 6(4-6) Physical Damage to Attacks
+{ Prefix Modifier "Reliable" (Tier: 8) — Attack }
++47(33-60) to Accuracy Rating
+{ Suffix Modifier "of Plunder" (Tier: 3) }
+6(6-10)% increased Rarity of Items found
+
+Item Class: Sceptres
+Rarity: Unique
+The Dark Defiler
+Rattling Sceptre
+--------
+Spirit: 100
+--------
+Requires: Level 36, 65 (unmet) Int
+--------
+Item Level: 39
+--------
+Grants Skill: Level 10 Skeletal Warrior Minion
+--------
+{ Unique Modifier — Mana }
++29(20-30) to maximum Mana
+{ Unique Modifier — Attribute }
++9(5-10) to Intelligence
+{ Unique Modifier — Mana }
+13(10-30)% increased Mana Regeneration Rate
+{ Unique Modifier }
+Gain 5% of Damage as Chaos Damage per Undead Minion
+--------
+Rare is the Necromancer who leads
+his undead armies from the front.
+
+Item Class: Gloves
+Rarity: Rare
+Horror Caress
+Spiral Wraps
+--------
+Evasion Rating: 48 (augmented)
+Energy Shield: 17 (augmented)
+--------
+Requires: Level 33, 19 (augmented) Dex, 19 (augmented) Int
+--------
+Item Level: 38
+--------
+{ Corruption Enhancement }
+19(20-10)% reduced Attribute Requirements
+--------
+{ Prefix Modifier "Poet's" (Tier: 6) — Life, Evasion, Energy Shield }
+12(6-13)% increased Evasion and Energy Shield
++8(7-10) to maximum Life
+{ Prefix Modifier "Frigid" (Tier: 6) — Damage, Elemental, Cold, Attack }
+Adds 8(7-8) to 12(12-14) Cold damage to Attacks
+{ Prefix Modifier "Precise" (Tier: 9) — Attack }
++27(11-32) to Accuracy Rating
+{ Suffix Modifier "of the Augur" (Tier: 5) — Attribute }
++18(17-20) to Intelligence
+{ Suffix Modifier "of Ire" (Tier: 5) — Damage, Critical }
+13(10-14)% increased Critical Damage Bonus
+--------
+Corrupted
+
+Item Class: Belts
+Rarity: Rare
+Dread Snare
+Linen Belt
+--------
+Requires: Level 11
+--------
+Item Level: 39
+--------
+{ Implicit Modifier — Mana }
+27(20-30)% increased Mana Recovery from Flasks
+{ Implicit Modifier — Charm }
+Has 2(1-2) Charm Slots
+--------
+{ Prefix Modifier "Affecting" (Tier: 6) — Mana }
+5(5-10)% increased Flask Mana Recovery rate
+{ Suffix Modifier "of the Penguin" (Tier: 7) — Elemental, Cold, Resistance }
++14(11-15)% to Cold Resistance
+{ Suffix Modifier "of the Newt" (Tier: 9) — Life }
+1.7(1-2) Life Regeneration per second
+{ Suffix Modifier "of Thick Skin" (Tier: 10) }
++8(6-11) to Stun Threshold
+
+Item Class: Bows
+Rarity: Rare
+Cataclysm Strike
+Dualstring Bow
+--------
+Physical Damage: 27-50 (augmented)
+Lightning Damage: 2-20 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.15
+--------
+Requires: Level 30, 41 (augmented) Dex
+--------
+Item Level: 38
+--------
+{ Implicit Modifier — Attack }
++50% Surpassing chance to fire an additional Arrow
+--------
+{ Prefix Modifier "Snapping" (Tier: 8) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 20(20-30) Lightning Damage
+{ Prefix Modifier "Mercenary's" (Tier: 5) — Damage, Physical, Attack }
+44(35-44)% increased Physical Damage
++97(73-97) to Accuracy Rating
+{ Prefix Modifier "Reliable" (Tier: 9) — Attack }
++33(33-60) to Accuracy Rating
+{ Suffix Modifier "of the Locust" (Tier: 4) — Life, Physical, Attack }
+Leeches 6.45(6-6.9)% of Physical Damage as Life
+{ Suffix Modifier "of the Apt" (Tier: 4) }
+20% reduced Attribute Requirements
+
+Item Class: Rings
+Rarity: Rare
+Soul Loop
+Pearl Ring
+--------
+Requires: Level 32
+--------
+Item Level: 38
+--------
+{ Implicit Modifier — Caster, Speed }
+7(7-10)% increased Cast Speed
+--------
+{ Prefix Modifier "Glinting" (Tier: 9) — Damage, Physical, Attack }
+Adds 2(1-2) to 3 Physical Damage to Attacks
+{ Suffix Modifier "of the Sky" (Tier: 3) — Attribute }
++7(5-7) to all Attributes
+{ Suffix Modifier "of the Troll" (Tier: 2) — Life }
+9.6(9.1-13) Life Regeneration per second
+
+Item Class: Spears
+Rarity: Rare
+Foe Edge
+Broad Spear
+--------
+Physical Damage: 32-48
+Lightning Damage: 1-16 (lightning)
+Critical Hit Chance: 7.57% (augmented)
+Attacks per Second: 1.40
+--------
+Requires: Level 40, 26 (unmet) Str, 55 Dex
+--------
+Item Level: 40
+--------
+{ Implicit Modifier — Attack }
+25% increased Melee Strike Range with this weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 16(13-19) Lightning Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.57(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Restoration" (Tier: 3) — Life, Attack }
+Grants 3 Life per Enemy Hit
+
+Item Class: Spears
+Rarity: Rare
+Rage Edge
+Broad Spear
+--------
+Quality: +2% (augmented)
+Physical Damage: 37-59 (augmented)
+Lightning Damage: 2-42 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.54 (augmented)
+--------
+Requires: Level 40, 26 Str, 55 Dex
+--------
+Item Level: 42
+--------
+{ Implicit Modifier — Attack }
+25% increased Melee Strike Range with this weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 4(4-6) to 10(7-11) Physical Damage
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 42(36-52) Lightning Damage
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+
+Item Class: Spears
+Rarity: Rare
+Rage Edge
+Broad Spear
+--------
+Quality: +2% (augmented)
+Physical Damage: 37-59 (augmented)
+Lightning Damage: 2-42 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.54 (augmented)
+--------
+Requires: Level 40, 26 Str, 55 Dex
+--------
+Item Level: 42
+--------
+{ Implicit Modifier — Attack }
+25% increased Melee Strike Range with this weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 4(4-6) to 10(7-11) Physical Damage
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 42(36-52) Lightning Damage
+{ Prefix Modifier "Reliable" (Tier: 8) — Attack }
++51(33-60) to Accuracy Rating
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+{ Suffix Modifier "of the Boxer" (Tier: 4) }
+Causes 44(41-50)% increased Stun Buildup
+{ Suffix Modifier "of Shining" (Tier: 3) — Attack }
++19(10-20) to Accuracy Rating
+5% increased Light Radius
+
+Item Class: Spears
+Rarity: Rare
+Rage Edge
+Broad Spear
+--------
+Quality: +2% (augmented)
+Physical Damage: 37-59 (augmented)
+Lightning Damage: 2-42 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.54 (augmented)
+--------
+Requires: Level 40, 26 Str, 55 Dex
+--------
+Item Level: 42
+--------
+{ Implicit Modifier — Attack }
+25% increased Melee Strike Range with this weapon
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 4(4-6) to 10(7-11) Physical Damage
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 42(36-52) Lightning Damage
+{ Prefix Modifier "Reliable" (Tier: 8) — Attack }
++51(33-60) to Accuracy Rating
+{ Suffix Modifier "of Ease" (Tier: 7) — Attack, Speed }
+10(8-10)% increased Attack Speed
+{ Suffix Modifier "of the Boxer" (Tier: 4) }
+Causes 44(41-50)% increased Stun Buildup
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 15(10-18) Life per enemy killed
+
+Item Class: Spears
+Rarity: Magic
+Buzzing Crossblade Spear of Ire
+--------
+Physical Damage: 25-52
+Lightning Damage: 1-14 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.60
+--------
+Requires: Level 45 (unmet), 26 Str, 63 Dex
+--------
+Item Level: 45
+--------
+{ Implicit Modifier }
+Prevent +4(3-7)% of Damage from Deflected Hits
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 14(13-19) Lightning Damage
+{ Suffix Modifier "of Ire" (Tier: 6) — Damage, Attack, Critical }
++10(10-11)% to Critical Damage Bonus
+
+Item Class: Spears
+Rarity: Rare
+Brood Edge
+Crossblade Spear
+--------
+Physical Damage: 26-56 (augmented)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.60
+--------
+Requires: Level 45 (unmet), 26 Str, 63 Dex
+--------
+Item Level: 45
+--------
+{ Implicit Modifier }
+Prevent +4(3-7)% of Damage from Deflected Hits
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Glinting" (Tier: 9) — Damage, Physical, Attack }
+Adds 1(1-2) to 4(4-5) Physical Damage
+{ Prefix Modifier "Focused" (Tier: 7) — Attack }
++62(61-84) to Accuracy Rating
+{ Suffix Modifier "of Rage" (Tier: 4) — Damage, Attack, Critical }
++14(14-16)% to Critical Damage Bonus
+
+Item Class: Boots
+Rarity: Magic
+Blurred Flared Boots of the Kiln
+--------
+Evasion Rating: 252 (augmented)
+--------
+Requires: Level 45, 60 Dex
+--------
+Item Level: 47
+--------
+{ Prefix Modifier "Blurred" (Tier: 3) — Evasion }
++95(88-116) to Evasion Rating
+{ Suffix Modifier "of the Kiln" (Tier: 5) — Elemental, Fire, Resistance }
++21(21-25)% to Fire Resistance
+
+Item Class: Amulets
+Rarity: Rare
+Foe Rosary
+Jade Amulet
+--------
+Requires: Level 48 (unmet)
+--------
+Item Level: 74
+--------
+{ Implicit Modifier — Attribute }
++15(10-15) to Dexterity
+--------
+{ Prefix Modifier "Pulsing" (Tier: 5) — Energy Shield }
++44(42-51) to maximum Energy Shield
+{ Prefix Modifier "Occultist's" (Tier: 2) — Damage, Caster }
+24(23-26)% increased Spell Damage
+{ Prefix Modifier "Reliable" (Tier: 7) — Attack }
++57(33-60) to Accuracy Rating
+{ Suffix Modifier "of the Penguin" (Tier: 7) — Elemental, Cold, Resistance }
++14(11-15)% to Cold Resistance
+{ Suffix Modifier "of Calamity" (Tier: 3) — Critical }
+28(25-29)% increased Critical Hit Chance
+{ Suffix Modifier "of the Wrestler" (Tier: 7) — Attribute }
++9(9-12) to Strength
+--------
+Note: ~b/o 2 divine
+
+Item Class: Body Armours
+Rarity: Rare
+Corruption Carapace
+Scalper's Jacket
+--------
+Evasion Rating: 225 (augmented)
+Energy Shield: 74 (augmented)
+--------
+Requires: Level 43, 35 Dex, 35 Int
+--------
+Sockets: S S 
+--------
+Item Level: 58
+--------
+18% increased Armour, Evasion and Energy Shield (rune)
++18% to Lightning Resistance (rune)
+--------
+{ Prefix Modifier "Bard's" (Tier: 3) — Life, Evasion, Energy Shield }
+28(27-32)% increased Evasion and Energy Shield
++30(26-32) to maximum Life
+{ Prefix Modifier "Countess'" (Tier: 4) }
++50(47-50) to Spirit
+{ Suffix Modifier "of Damping" (Tier: 5) — Elemental, Fire, Ailment }
+39(36-40)% reduced Ignite Duration on you
+{ Suffix Modifier "of the Tempest" (Tier: 4) — Elemental, Lightning, Resistance }
++27(26-30)% to Lightning Resistance
+{ Suffix Modifier "of the Walrus" (Tier: 4) — Elemental, Cold, Resistance }
++26(26-30)% to Cold Resistance
+--------
+Note: ~b/o 5 divine
+
+Item Class: Spears
+Rarity: Rare
+Corpse Edge
+Crossblade Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 59-124 (augmented)
+Elemental Damage: 9-15 (cold), 2-101 (lightning)
+Critical Hit Chance: 7.64% (augmented)
+Attacks per Second: 1.71 (augmented)
+--------
+Requires: Level 48, 26 Str, 63 Dex
+--------
+Sockets: S 
+--------
+Item Level: 45
+--------
+Adds 9 to 15 Cold Damage (rune)
+--------
+{ Implicit Modifier }
+Prevent +6(3-7)% of Damage from Deflected Hits
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Vicious" (Tier: 5) — Damage, Physical, Attack }
+98(85-109)% increased Physical Damage
+{ Prefix Modifier "Reliable" (Tier: 8) — Attack }
++51(33-60) to Accuracy Rating
+{ Crafted Prefix Modifier "Shocking" (Tier: 4) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-6) to 101(85-107) Lightning Damage
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.64(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Skill" (Tier: 8) — Attack, Speed }
+7(5-7)% increased Attack Speed
+{ Suffix Modifier "of the Panther" (Tier: 4) — Attribute }
++22(21-24) to Dexterity
+
+Item Class: Spears
+Rarity: Rare
+Mind Edge
+Barbed Spear
+--------
+Quality: +20% (augmented)
+Physical Damage: 31-60 (augmented)
+Elemental Damage: 1-4 (fire), 3-68 (lightning)
+Critical Hit Chance: 8.37% (augmented)
+Attacks per Second: 1.74 (augmented)
+--------
+Requires: Level 33, 20 Str, 47 Dex
+--------
+Sockets: S 
+--------
+Item Level: 35
+--------
+Adds 1 to 20 Lightning Damage (rune)
+--------
+{ Implicit Modifier — Damage, Physical, Attack, Ailment }
+Bleeding you inflict deals Damage 11(10-20)% faster
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Crackling" (Tier: 7) — Damage, Elemental, Lightning, Attack }
+Adds 2(1-2) to 48(36-52) Lightning Damage
+{ Prefix Modifier "Heated" (Tier: 10) — Damage, Elemental, Fire, Attack }
+Adds 1(1-2) to 4(3-5) Fire Damage
+{ Prefix Modifier "Reaver's" (Tier: 6) — Damage, Physical, Attack }
+31(25-34)% increased Physical Damage
++70(47-72) to Accuracy Rating
+{ Suffix Modifier "of Disaster" (Tier: 4) — Attack, Critical }
++2.37(2.11-2.7)% to Critical Hit Chance
+{ Suffix Modifier "of Renown" (Tier: 5) — Attack, Speed }
+16(14-16)% increased Attack Speed
+{ Suffix Modifier "of Triumph" (Tier: 6) — Life }
+Gain 18(10-18) Life per enemy killed
+
+Item Class: Amulets
+Rarity: Rare
+Chimeric Rosary
+Pearlescent Amulet
+--------
+Requires: Level 30
+--------
+Item Level: 46
+--------
+{ Implicit Modifier — Elemental, Fire, Cold, Lightning, Resistance }
++9(7-10)% to all Elemental Resistances
+--------
+{ Prefix Modifier "Layered" (Tier: 6) — Armour }
+20(15-20)% increased Armour
+{ Suffix Modifier "of the Hydra" (Tier: 6) — Life }
+7(6.1-9) Life Regeneration per second
+{ Suffix Modifier "of the Pupil" (Tier: 8) — Attribute }
++5(5-8) to Intelligence
+{ Suffix Modifier "of the Yeti" (Tier: 5) — Elemental, Cold, Resistance }
++24(21-25)% to Cold Resistance
+
+Item Class: Body Armours
+Rarity: Rare
+Armageddon Suit
+Runeforged Waxed Jacket
+--------
+Quality: +20% (augmented)
+Evasion Rating: 81 (augmented)
+Energy Shield: 38 (augmented)
+Runic Ward: 52 (augmented)
+--------
+Requires: Level 15, 13 Dex, 13 Int
+--------
+Sockets: S S 
+--------
+Item Level: 11
+--------
++50 to Spirit (rune)
++10% to Cold Resistance (rune)
+-1 to Spirit per 2 Levels (rune)
+--------
+{ Prefix Modifier "Shadowy" (Tier: 8) — Evasion, Energy Shield }
+17(15-26)% increased Evasion and Energy Shield
+{ Prefix Modifier "Healthy" (Tier: 12) — Life }
++28(20-29) to maximum Life
+{ Desecrated Prefix Modifier "Poet's" (Tier: 6) — Life, Evasion, Energy Shield }
+11(6-13)% increased Evasion and Energy Shield
++7(7-10) to maximum Life
+{ Suffix Modifier "of Reinforced Skin" (Tier: 9) }
++18(12-29) to Stun Threshold
+{ Suffix Modifier "of the Newt" (Tier: 11) — Life }
+1.9(1-2) Life Regeneration per second
+{ Suffix Modifier "of the Pupil" (Tier: 8) — Attribute }
++6(5-8) to Intelligence
+
+Item Class: Body Armours
+Rarity: Rare
+Glyph Veil
+Scout's Vest
+--------
+Quality: +20% (augmented)
+Evasion Rating: 449 (augmented)
+--------
+Requires: Level 33, 54 Dex
+--------
+Sockets: S 
+--------
+Item Level: 35
+--------
+-10% to all Maximum Elemental Resistances (rune)
++20% to all Elemental Resistances (rune)
+--------
+{ Prefix Modifier "Agile" (Tier: 11) — Evasion }
++18(11-18) to Evasion Rating
+{ Prefix Modifier "Viscountess'" (Tier: 6) }
++40(38-42) to Spirit
+{ Prefix Modifier "Spectre's" (Tier: 6) — Evasion }
+45(43-55)% increased Evasion Rating
+{ Suffix Modifier "of the Drake" (Tier: 6) — Elemental, Fire, Resistance }
++17(16-20)% to Fire Resistance
+{ Suffix Modifier "of Banishment" (Tier: 5) — Chaos, Resistance }
++9(8-11)% to Chaos Resistance
+{ Suffix Modifier "of the Penguin" (Tier: 7) — Elemental, Cold, Resistance }
++12(11-15)% to Cold Resistance
+--------
+Note: ~b/o 4 exalted
+
+Item Class: Rings
+Rarity: Rare
+Bramble Loop
+Amethyst Ring
+--------
+Requires: Level 48
+--------
+Item Level: 61
+--------
+{ Implicit Modifier — Chaos, Resistance }
++9(7-13)% to Chaos Resistance
+--------
+{ Prefix Modifier "Robust" (Tier: 3) — Life }
++84(70-84) to maximum Life
+{ Desecrated Prefix Modifier "Incinerating" (Tier: 3) — Damage, Elemental, Fire, Attack }
+Adds 13(13-19) to 31(27-32) Fire damage to Attacks
+{ Prefix Modifier "Glinting" (Tier: 9) — Damage, Physical, Attack }
+Adds 1(1-2) to 3 Physical Damage to Attacks
+{ Suffix Modifier "of the Panther" (Tier: 4) — Attribute }
++21(21-24) to Dexterity
+{ Suffix Modifier "of Infusion" (Tier: 4) — Mana }
+Gain 7(6-9) Mana per enemy killed
+{ Crafted Suffix Modifier "of the Kiln" (Tier: 5) — Elemental, Fire, Resistance }
++24(21-25)% to Fire Resistance
+
+Item Class: Rings
+Rarity: Rare
+Behemoth Finger
+Topaz Ring
+--------
+Requires: Level 26
+--------
+Item Level: 43
+--------
+{ Implicit Modifier — Elemental, Lightning, Resistance }
++21(20-30)% to Lightning Resistance
+--------
+{ Prefix Modifier "Chilled" (Tier: 8) — Damage, Elemental, Cold, Attack }
+Adds 4(3-4) to 6(5-8) Cold damage to Attacks
+{ Prefix Modifier "Burning" (Tier: 6) — Damage, Elemental, Fire, Attack }
+Adds 10(9-11) to 14(14-17) Fire damage to Attacks
+{ Prefix Modifier "Blistering" (Tier: 4) — Damage, Elemental, Fire }
+14(13-17)% increased Fire Damage
+{ Suffix Modifier "of the Crystal" (Tier: 5) — Elemental, Fire, Cold, Lightning, Resistance }
++5(3-5)% to all Elemental Resistances
+{ Suffix Modifier "of Raiding" (Tier: 2) }
+11(11-14)% increased Rarity of Items found
+{ Suffix Modifier "of the Brute" (Tier: 8) — Attribute }
++8(5-8) to Strength
+--------
+Note: ~b/o 3 exalted
+
+Item Class: Rings
+Rarity: Rare
+Dragon Gyre
+Pearl Ring
+--------
+Requires: Level 48
+--------
+Item Level: 67
+--------
+{ Implicit Modifier — Caster, Speed }
+7(7-10)% increased Cast Speed
+--------
+{ Prefix Modifier "Hoarder's" (Tier: 1) }
+19(16-19)% increased Rarity of Items found
+{ Prefix Modifier "Chalybeous" (Tier: 4) — Mana }
++124(105-124) to maximum Mana
+{ Prefix Modifier "Alpine" (Tier: 4) — Damage, Elemental, Cold }
+17(13-17)% increased Cold Damage
+{ Suffix Modifier "of the Maelstrom" (Tier: 3) — Elemental, Lightning, Resistance }
++31(31-35)% to Lightning Resistance
+{ Suffix Modifier "of the Arid" (Tier: 1) — Mana, Physical, Attack }
+Leech 6.58(6-6.9)% of Physical Attack Damage as Mana
+{ Suffix Modifier "of Nimbleness" (Tier: 4) — Caster, Speed }
+15(13-15)% increased Cast Speed
+--------
+Note: ~b/o 2 exalted
+
+Item Class: Rings
+Rarity: Rare
+Armageddon Gyre
+Amethyst Ring
+--------
+Requires: Level 20
+--------
+Item Level: 22
+--------
+{ Implicit Modifier — Chaos, Resistance }
++7(7-13)% to Chaos Resistance
+--------
+{ Prefix Modifier "Charged" (Tier: 6) — Damage, Elemental, Lightning }
+3(3-7)% increased Lightning Damage
+{ Prefix Modifier "Sanguine" (Tier: 6) — Life }
++31(30-39) to maximum Life
+{ Suffix Modifier "of Nimbleness" (Tier: 4) — Caster, Speed }
+14(13-15)% increased Cast Speed
+
+Item Class: Quivers
+Rarity: Rare
+Oblivion Quill
+Toxic Quiver
+--------
+Requires: Level 39
+--------
+Item Level: 51
+--------
+{ Implicit Modifier — Chaos, Attack, Ailment }
+20(20-30)% chance to Poison on Hit with Attacks
+--------
+{ Prefix Modifier "Trenchant" (Tier: 5) — Damage }
+30(21-30)% increased Damage with Bow Skills
+{ Prefix Modifier "Icy" (Tier: 7) — Damage, Elemental, Cold, Attack }
+Adds 5(5-6) to 10(9-11) Cold damage to Attacks
+{ Suffix Modifier "of Menace" (Tier: 6) — Attack, Critical }
+10(10-14)% increased Critical Hit Chance for Attacks
+{ Suffix Modifier "of Anger" (Tier: 5) — Damage, Attack, Critical }
+15(15-19)% increased Critical Damage Bonus for Attack Damage
+--------
+Can only be equipped if you are wielding a Bow.
+
+Item Class: Rings
+Rarity: Rare
+Loath Loop
+Sapphire Ring
+--------
+Requires: Level 26
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Elemental, Cold, Resistance }
++24(20-30)% to Cold Resistance
+--------
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 3(2-3) to 4(4-6) Physical Damage to Attacks
+{ Prefix Modifier "Frigid" (Tier: 6) — Damage, Elemental, Cold, Attack }
+Adds 8(7-8) to 13(12-14) Cold damage to Attacks
+{ Suffix Modifier "of Conquest" (Tier: 3) — Life }
+Gain 26(19-28) Life per enemy killed
+{ Suffix Modifier "of the Brute" (Tier: 8) — Attribute }
++5(5-8) to Strength
+{ Suffix Modifier "of the Starfish" (Tier: 4) — Life }
+5.8(4.1-6) Life Regeneration per second
+
+Item Class: Rings
+Rarity: Rare
+Bramble Loop
+Amethyst Ring
+--------
+Requires: Level 48
+--------
+Item Level: 61
+--------
+{ Implicit Modifier — Chaos, Resistance }
++9(7-13)% to Chaos Resistance
+--------
+{ Prefix Modifier "Robust" (Tier: 3) — Life }
++84(70-84) to maximum Life
+{ Desecrated Prefix Modifier "Incinerating" (Tier: 3) — Damage, Elemental, Fire, Attack }
+Adds 13(13-19) to 31(27-32) Fire damage to Attacks
+{ Suffix Modifier "of the Panther" (Tier: 4) — Attribute }
++21(21-24) to Dexterity
+{ Suffix Modifier "of Infusion" (Tier: 4) — Mana }
+Gain 7(6-9) Mana per enemy killed
+{ Crafted Suffix Modifier "of the Kiln" (Tier: 5) — Elemental, Fire, Resistance }
++24(21-25)% to Fire Resistance
+--------
+Note: ~b/o 3 exalted
+
+Item Class: Body Armours
+Rarity: Rare
+Apocalypse Shelter
+Scout's Vest
+--------
+Evasion Rating: 377 (augmented)
+--------
+Requires: Level 48, 54 Dex
+--------
+Sockets: S S 
+--------
+Item Level: 70
+--------
+16% increased Armour, Evasion and Energy Shield (rune)
++9 to Strength (rune)
+--------
+{ Prefix Modifier "Sanguine" (Tier: 11) — Life }
++32(30-39) to maximum Life
+{ Prefix Modifier "Viscountess'" (Tier: 6) }
++40(38-42) to Spirit
+{ Prefix Modifier "Moose's" (Tier: 4) — Evasion }
++31(27-38) to Evasion Rating
+23(21-26)% increased Evasion Rating
+{ Suffix Modifier "of the Polar Bear" (Tier: 3) — Elemental, Cold, Resistance }
++34(31-35)% to Cold Resistance
+{ Suffix Modifier "of the Furnace" (Tier: 4) — Elemental, Fire, Resistance }
++26(26-30)% to Fire Resistance
+{ Suffix Modifier "of the Squall" (Tier: 7) — Elemental, Lightning, Resistance }
++11(11-15)% to Lightning Resistance
+
+Item Class: Rings
+Rarity: Rare
+Bramble Loop
+Amethyst Ring
+--------
+Requires: Level 48
+--------
+Item Level: 61
+--------
+{ Implicit Modifier — Chaos, Resistance }
++9(7-13)% to Chaos Resistance
+--------
+{ Prefix Modifier "Robust" (Tier: 3) — Life }
++84(70-84) to maximum Life
+{ Desecrated Prefix Modifier "Incinerating" (Tier: 3) — Damage, Elemental, Fire, Attack }
+Adds 13(13-19) to 31(27-32) Fire damage to Attacks
+{ Suffix Modifier "of the Panther" (Tier: 4) — Attribute }
++21(21-24) to Dexterity
+{ Suffix Modifier "of Infusion" (Tier: 4) — Mana }
+Gain 7(6-9) Mana per enemy killed
+{ Crafted Suffix Modifier "of the Kiln" (Tier: 5) — Elemental, Fire, Resistance }
++24(21-25)% to Fire Resistance
+--------
+Note: ~b/o 3 exalted
+
+Item Class: Rings
+Rarity: Rare
+Loath Loop
+Sapphire Ring
+--------
+Requires: Level 26
+--------
+Item Level: 35
+--------
+{ Implicit Modifier — Elemental, Cold, Resistance }
++24(20-30)% to Cold Resistance
+--------
+{ Prefix Modifier "Burnished" (Tier: 8) — Damage, Physical, Attack }
+Adds 3(2-3) to 4(4-6) Physical Damage to Attacks
+{ Prefix Modifier "Frigid" (Tier: 6) — Damage, Elemental, Cold, Attack }
+Adds 8(7-8) to 13(12-14) Cold damage to Attacks
+{ Suffix Modifier "of Conquest" (Tier: 3) — Life }
+Gain 26(19-28) Life per enemy killed
+{ Suffix Modifier "of the Brute" (Tier: 8) — Attribute }
++5(5-8) to Strength
+{ Suffix Modifier "of the Starfish" (Tier: 4) — Life }
+5.8(4.1-6) Life Regeneration per second
+
+Item Class: Spears
+Rarity: Rare
+Sol Edge
+Crossblade Spear
+--------
+Physical Damage: 25-52
+Lightning Damage: 1-14 (lightning)
+Critical Hit Chance: 5.00%
+Attacks per Second: 1.60
+--------
+Requires: Level 45 (unmet), 26 Str, 63 Dex
+--------
+Item Level: 45
+--------
+{ Implicit Modifier }
+Prevent +4(3-7)% of Damage from Deflected Hits
+--------
+Grants Skill: Spear Throw
+--------
+{ Prefix Modifier "Buzzing" (Tier: 9) — Damage, Elemental, Lightning, Attack }
+Adds 1 to 14(13-19) Lightning Damage
+{ Suffix Modifier "of Ire" (Tier: 6) — Damage, Attack, Critical }
++10(10-11)% to Critical Damage Bonus
+{ Suffix Modifier "of the Combatant" (Tier: 3) }
+Causes 52(51-60)% increased Stun Buildup

@@ -531,7 +531,7 @@ function wireCopyButtons() {
       }
 
       try {
-        const text = formatItemText(item);
+        const text = formatItemText(item, { mode: "modern" });
         await navigator.clipboard.writeText(text);
 
         // Send log to content script for Sentry logging

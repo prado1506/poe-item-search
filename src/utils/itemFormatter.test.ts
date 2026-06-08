@@ -153,4 +153,108 @@ describe("itemFormatter", () => {
     expect(result).toContain("I rule the north");
     expect(result).toContain("Sing Meginord's song!");
   });
+
+  test("formats modern copy style with modifier headers and ranges", async () => {
+    const itemJson = await Bun.file("tests/fixtures/gloves.json").json();
+    const item = (itemJson?.result?.[0]?.item ?? itemJson) as TradeItem;
+
+    const result = formatItemText(item, { mode: "modern" });
+
+    expect(result).toContain("{ Prefix Modifier");
+    expect(result).toContain("{ Suffix Modifier");
+    expect(result).toContain("(Tier: ");
+    expect(result).not.toContain("(Tier: P");
+    expect(result).not.toContain("(Tier: S");
+
+    // Modern game copy includes rolled value with range hints.
+    expect(result).toMatch(/\d+(?:\.\d+)?\([+-]?\d+(?:\.\d+)?-[+-]?\d+(?:\.\d+)?\)/);
+
+    // Should not append legacy inline explicit suffixes.
+    expect(result).not.toContain("(crafted)");
+    expect(result).not.toContain("(fractured)");
+    expect(result).not.toContain("(desecrated)");
+  });
+
+  test("keeps ranges attached to the correct modern mod lines when metadata order differs", () => {
+    const item: TradeItem = {
+      id: "test-quarterstaff",
+      realm: "poe2",
+      verified: true,
+      w: 2,
+      h: 4,
+      icon: "",
+      league: "Test",
+      name: "Dire Roar",
+      typeLine: "Waxing Quarterstaff",
+      baseType: "Waxing Quarterstaff",
+      rarity: "Rare",
+      frameType: 2,
+      ilvl: 82,
+      identified: true,
+      corrupted: true,
+      properties: [
+        { name: "Quarterstaff", values: [], displayMode: 0 },
+        { name: "[Quality]", values: [["+20%", 1]], displayMode: 0 },
+      ],
+      explicitMods: [
+        "Adds 12 to 20 [Physical|Physical] Damage",
+        "Adds 116 to 187 [Fire] Damage",
+        "16% increased [Attack] Speed",
+        "+20 to [Dexterity]",
+        "[ManaLeech|Leeches] 7.89% of [Physical] Damage as Mana",
+      ],
+      craftedMods: ["Adds 4 to 81 [Lightning] Damage"],
+      extended: {
+        mods: {
+          explicit: [
+            {
+              name: "Cremating",
+              tier: "P2",
+              level: 1,
+              magnitudes: [
+                { hash: "a", min: "102", max: "130" },
+                { hash: "a", min: "155", max: "198" },
+              ],
+            },
+            {
+              name: "Polished",
+              tier: "P7",
+              level: 1,
+              magnitudes: [
+                { hash: "b", min: "8", max: "12" },
+                { hash: "b", min: "15", max: "22" },
+              ],
+            },
+            {
+              name: "of Renown",
+              tier: "S5",
+              level: 1,
+              magnitudes: [{ hash: "c", min: "14", max: "16" }],
+            },
+            {
+              name: "of the Falcon",
+              tier: "S5",
+              level: 1,
+              magnitudes: [{ hash: "d", min: "17", max: "20" }],
+            },
+            {
+              name: "of the Drought",
+              tier: "S2",
+              level: 1,
+              magnitudes: [{ hash: "e", min: "7", max: "7.9" }],
+            },
+          ],
+        },
+      },
+    };
+
+    const result = formatItemText(item, { mode: "modern" });
+
+    expect(result).toContain('{ Prefix Modifier "Polished" (Tier: 7) }\nAdds 12(8-12) to 20(15-22) Physical Damage');
+    expect(result).toContain('{ Prefix Modifier "Cremating" (Tier: 2) }\nAdds 116(102-130) to 187(155-198) Fire Damage');
+    expect(result).toContain('{ Suffix Modifier "of Renown" (Tier: 5) }\n16(14-16)% increased Attack Speed');
+    expect(result).toContain('{ Suffix Modifier "of the Falcon" (Tier: 5) }\n+20(17-20) to Dexterity');
+    expect(result).toContain('{ Suffix Modifier "of the Drought" (Tier: 2) }\nLeeches 7.89(7-7.9)% of Physical Damage as Mana');
+    expect(result).toContain('{ Crafted Prefix Modifier }\nAdds 4 to 81 Lightning Damage');
+  });
 });

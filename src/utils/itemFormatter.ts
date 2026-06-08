@@ -5,6 +5,7 @@
 
 import type {
   TradeItem,
+  TradeItemExtendedMod,
   TradeItemProperty,
   TradeItemRequirement,
 } from "@/types/tradeItem";
@@ -14,6 +15,19 @@ const CLASS_NORMALYZER: Record<string, string> = {
 };
 
 const SEPARATOR = "--------";
+const NUMBER_RE = /([+-]?\d+(?:\.\d+)?)/g;
+
+type FormatMode = "legacy" | "modern";
+
+interface FormatItemTextOptions {
+  mode?: FormatMode;
+}
+
+interface ModernModEntry {
+  category: "implicit" | "explicit" | "fractured" | "desecrated" | "crafted";
+  rawMod: string;
+  modData?: TradeItemExtendedMod;
+}
 
 /**
  * Strip bracket notation from mod text.
@@ -162,10 +176,185 @@ function formatMod(mod: string, suffix?: string): string {
   return suffix ? `${cleanMod} (${suffix})` : cleanMod;
 }
 
-/**
- * Convert a TradeItem from the API to the game's raw text format.
- */
-export function formatItemText(item: TradeItem): string {
+function inferAffixKind(name?: string): "Prefix" | "Suffix" {
+  if (!name) {
+    return "Prefix";
+  }
+
+  return /^of\b/i.test(name.trim()) ? "Suffix" : "Prefix";
+}
+
+function buildHeaderLabel(
+  category: "implicit" | "explicit" | "fractured" | "desecrated" | "crafted",
+  modData?: TradeItemExtendedMod
+): string {
+  if (category === "implicit") return "Implicit Modifier";
+
+  const affix = inferAffixKind(modData?.name);
+
+  if (category === "crafted") {
+    return `Crafted ${affix} Modifier`;
+  }
+
+  if (category === "fractured") {
+    return `Fractured ${affix} Modifier`;
+  }
+
+  if (category === "desecrated") {
+    return `Desecrated ${affix} Modifier`;
+  }
+
+  return `${affix} Modifier`;
+}
+
+function addMagnitudeRanges(mod: string, magnitudes?: TradeItemExtendedMod["magnitudes"]): string {
+  if (!magnitudes || magnitudes.length === 0) {
+    return mod;
+  }
+
+  let index = 0;
+  return mod.replace(NUMBER_RE, (value) => {
+    const magnitude = magnitudes[index++];
+    if (!magnitude) {
+      return value;
+    }
+
+    if (magnitude.min === magnitude.max && magnitude.min === value) {
+      return value;
+    }
+
+    return `${value}(${magnitude.min}-${magnitude.max})`;
+  });
+}
+
+function extractNumericValues(text: string): number[] {
+  return Array.from(text.matchAll(NUMBER_RE), (match) => parseFloat(match[1]));
+}
+
+function scoreMagnitudeMatch(values: number[], modData?: TradeItemExtendedMod): number {
+  const magnitudes = modData?.magnitudes;
+  if (!magnitudes || magnitudes.length === 0) {
+    return values.length === 0 ? 0 : Number.NEGATIVE_INFINITY;
+  }
+
+  let score = values.length === magnitudes.length ? 20 : -Math.abs(values.length - magnitudes.length) * 10;
+  const compareCount = Math.min(values.length, magnitudes.length);
+
+  for (let index = 0; index < compareCount; index++) {
+    const value = values[index];
+    const magnitude = magnitudes[index];
+    const min = parseFloat(magnitude.min);
+    const max = parseFloat(magnitude.max);
+
+    if (Number.isNaN(min) || Number.isNaN(max)) {
+      continue;
+    }
+
+    if (value >= min && value <= max) {
+      score += 50;
+      continue;
+    }
+
+    const distance = value < min ? min - value : value - max;
+    score -= distance * 5;
+  }
+
+  return score;
+}
+
+function matchModsToMetadata(
+  mods: string[] | undefined,
+  modData: TradeItemExtendedMod[] | undefined
+): Array<TradeItemExtendedMod | undefined> {
+  if (!mods || mods.length === 0 || !modData || modData.length === 0) {
+    return mods?.map(() => undefined) ?? [];
+  }
+
+  const remaining = new Set(modData.map((_, index) => index));
+
+  return mods.map((rawMod) => {
+    const values = extractNumericValues(stripBracketNotation(rawMod));
+    let bestIndex: number | undefined;
+    let bestScore = Number.NEGATIVE_INFINITY;
+
+    for (const candidateIndex of remaining) {
+      const candidateScore = scoreMagnitudeMatch(values, modData[candidateIndex]);
+      if (candidateScore > bestScore) {
+        bestScore = candidateScore;
+        bestIndex = candidateIndex;
+      }
+    }
+
+    if (bestIndex === undefined || bestScore === Number.NEGATIVE_INFINITY) {
+      return undefined;
+    }
+
+    remaining.delete(bestIndex);
+    return modData[bestIndex];
+  });
+}
+
+function formatModernHeader(
+  category: "implicit" | "explicit" | "fractured" | "desecrated" | "crafted",
+  modData?: TradeItemExtendedMod
+): string {
+  const label = buildHeaderLabel(category, modData);
+  const name = modData?.name ? ` \"${modData.name}\"` : "";
+  const normalizedTier = modData?.tier?.match(/(\d+)$/)?.[1] ?? modData?.tier;
+  const tier = normalizedTier ? ` (Tier: ${normalizedTier})` : "";
+
+  return `{ ${label}${name}${tier} }`;
+}
+
+function buildModernModEntries(
+  category: "implicit" | "explicit" | "fractured" | "desecrated" | "crafted",
+  mods: string[] | undefined,
+  modData: TradeItemExtendedMod[] | undefined
+) : ModernModEntry[] {
+  if (!mods || mods.length === 0) {
+    return [];
+  }
+
+  const matchedMetadata = matchModsToMetadata(mods, modData);
+
+  return mods.map((rawMod, index) => ({
+    category,
+    rawMod,
+    modData: matchedMetadata[index],
+  }));
+}
+
+function getModernAffixSortKey(entry: ModernModEntry): number {
+  if (entry.category === "implicit") {
+    return -10;
+  }
+
+  const affixKind = inferAffixKind(entry.modData?.name);
+  const affixRank = affixKind === "Prefix" ? 0 : 10;
+  const categoryRank = entry.category === "crafted" ? 5 : 0;
+
+  return affixRank + categoryRank;
+}
+
+function pushModernModEntries(lines: string[], entries: ModernModEntry[]) {
+  if (entries.length === 0) {
+    return;
+  }
+
+  const sortedEntries = [...entries].sort(
+    (left, right) => getModernAffixSortKey(left) - getModernAffixSortKey(right)
+  );
+
+  for (const entry of sortedEntries) {
+    const cleanMod = stripBracketNotation(entry.rawMod);
+    const rangedMod = addMagnitudeRanges(cleanMod, entry.modData?.magnitudes);
+
+    lines.push(formatModernHeader(entry.category, entry.modData));
+    lines.push(rangedMod);
+  }
+}
+
+function formatItemTextLegacy(item: TradeItem): string {
   const lines: string[] = [];
 
   // Item Class
@@ -304,4 +493,152 @@ export function formatItemText(item: TradeItem): string {
   }
 
   return lines.join("\n");
+}
+
+function formatItemTextModern(item: TradeItem): string {
+  const lines: string[] = [];
+
+  const itemClass = getItemClass(item.properties);
+  if (itemClass) {
+    const pluralClass = pluralizeItemClass(itemClass);
+    lines.push(`Item Class: ${pluralClass}`);
+  }
+
+  lines.push(`Rarity: ${item.rarity}`);
+
+  if (item.name && (item.rarity === "Rare" || item.rarity === "Unique")) {
+    lines.push(item.name);
+  }
+
+  lines.push(item.typeLine);
+
+  if (item.properties && item.properties.length > 0) {
+    const propLines = formatProperties(item.properties);
+    if (propLines.length > 0) {
+      lines.push(SEPARATOR);
+      lines.push(...propLines);
+    }
+  }
+
+  if (item.requirements && item.requirements.length > 0) {
+    lines.push(SEPARATOR);
+    lines.push(...formatRequirements(item.requirements));
+  }
+
+  const socketsLine = formatSockets(item.sockets);
+  if (socketsLine) {
+    lines.push(SEPARATOR);
+    lines.push(socketsLine);
+  }
+
+  lines.push(SEPARATOR);
+  lines.push(`Item Level: ${item.ilvl}`);
+
+  if (item.runeMods && item.runeMods.length > 0) {
+    lines.push(SEPARATOR);
+    for (const mod of item.runeMods) {
+      lines.push(formatMod(mod, "rune"));
+    }
+  }
+
+  if (item.enchantMods && item.enchantMods.length > 0) {
+    lines.push(SEPARATOR);
+    for (const mod of item.enchantMods) {
+      lines.push(formatMod(mod, "enchant"));
+    }
+  }
+
+  const hasModHeaders =
+    (item.implicitMods && item.implicitMods.length > 0) ||
+    (item.fracturedMods && item.fracturedMods.length > 0) ||
+    (item.explicitMods && item.explicitMods.length > 0) ||
+    (item.desecratedMods && item.desecratedMods.length > 0);
+
+  if (hasModHeaders) {
+    lines.push(SEPARATOR);
+  }
+
+  const modernModEntries = [
+    ...buildModernModEntries(
+      "implicit",
+      item.implicitMods,
+      item.extended?.mods?.implicit
+    ),
+    ...buildModernModEntries(
+      "fractured",
+      item.fracturedMods,
+      item.extended?.mods?.fractured
+    ),
+    ...buildModernModEntries(
+      "explicit",
+      item.explicitMods,
+      item.extended?.mods?.explicit
+    ),
+    ...buildModernModEntries(
+      "desecrated",
+      item.desecratedMods,
+      item.extended?.mods?.desecrated
+    ),
+    ...buildModernModEntries(
+      "crafted",
+      item.craftedMods,
+      undefined
+    ),
+  ];
+
+  pushModernModEntries(lines, modernModEntries);
+
+  if (item.mutatedMods && item.mutatedMods.length > 0) {
+    for (const mod of item.mutatedMods) {
+      lines.push(formatMod(mod, "mutated"));
+    }
+  }
+
+  if (item.fractured) {
+    lines.push(SEPARATOR);
+    lines.push("Fractured Item");
+  }
+
+  if (item.corrupted) {
+    lines.push(SEPARATOR);
+    lines.push("Corrupted");
+  }
+
+  if (item.flavourText && item.flavourText.length > 0) {
+    lines.push(SEPARATOR);
+    for (const text of item.flavourText) {
+      lines.push(text);
+    }
+  }
+
+  if (item.note) {
+    lines.push(SEPARATOR);
+    lines.push(`Note: ${item.note}`);
+  }
+
+  return lines.join("\n");
+}
+
+/**
+ * Convert a TradeItem from the API to the game's raw text format.
+ */
+export function formatItemText(
+  item: TradeItem,
+  options: FormatItemTextOptions = {}
+): string {
+  if (options.mode === "modern") {
+    const hasExtendedMods =
+      !!item.extended?.mods?.explicit ||
+      !!item.extended?.mods?.implicit ||
+      !!item.extended?.mods?.fractured ||
+      !!item.extended?.mods?.desecrated;
+
+    if (!hasExtendedMods) {
+      return formatItemTextLegacy(item);
+    }
+
+    return formatItemTextModern(item);
+  }
+
+  return formatItemTextLegacy(item);
 }

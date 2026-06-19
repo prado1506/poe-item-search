@@ -1,6 +1,60 @@
 import { addRegexToStats } from "./stat.js";
-import { buildTypeFilters } from "./itemClass.js";
+import { buildTypeFilters, getCategoryFromItemText } from "./itemClass.js";
 import { normalizeItemText } from "./itemNormalizer.js";
+
+/**
+ * Stats that exist in two flavours in the trade API: a global one and a
+ * "(Local)" one with identical base text. In-game item text never prints the
+ * "(Local)" suffix, so the matcher always lands on the global id. On the trade
+ * site the item's OWN roll (a weapon's attack speed, an armour piece's defences)
+ * is the (Local) variant, so we remap global -> local based on item category.
+ *
+ * Derived from stats.json: all 8 explicit "(Local)" stats with a global sibling.
+ * Keyed by the global (base) explicit id -> local explicit id.
+ */
+const LOCAL_STAT_REMAP = {
+  // Weapons
+  weapon: {
+    "explicit.stat_681332047": "explicit.stat_210067635", // #% increased Attack Speed
+    "explicit.stat_803737631": "explicit.stat_691932474", // # to Accuracy Rating
+  },
+  // Armour pieces (defences roll locally on the item that has the base)
+  armour: {
+    "explicit.stat_2866361420": "explicit.stat_1062208444", // #% increased Armour
+    "explicit.stat_809229260": "explicit.stat_3484657501",  // # to Armour
+    "explicit.stat_2106365538": "explicit.stat_124859000",  // #% increased Evasion Rating
+    "explicit.stat_2144192055": "explicit.stat_53045048",   // # to Evasion Rating
+    "explicit.stat_3489782002": "explicit.stat_4052037485", // # to maximum Energy Shield
+  },
+  // Shields / Bucklers additionally roll local Block chance
+  shield: {
+    "explicit.stat_4147897060": "explicit.stat_2481353198", // #% increased Block chance
+  },
+};
+
+function getLocalRemapForCategory(category) {
+  if (!category) return null;
+  if (category.startsWith("weapon.")) return LOCAL_STAT_REMAP.weapon;
+  if (category === "armour.shield" || category === "armour.buckler") {
+    return { ...LOCAL_STAT_REMAP.armour, ...LOCAL_STAT_REMAP.shield };
+  }
+  if (category.startsWith("armour.")) return LOCAL_STAT_REMAP.armour;
+  return null;
+}
+
+/**
+ * Remap matched stats whose global id has a category-appropriate (Local) sibling.
+ * Looks up by the explicit-normalized id (so fractured/desecrated rolls remap too,
+ * matching the existing id normalization used when building filters).
+ */
+function applyLocalStatRemap(matched, category) {
+  const remap = getLocalRemapForCategory(category);
+  if (!remap) return matched;
+  return matched.map((stat) => {
+    const local = remap[normalizeStatIdToExplicit(stat.id)];
+    return local ? { ...stat, id: local } : stat;
+  });
+}
 
 export function getSearchQuery(item, stats) {
   const query = {};
@@ -33,7 +87,12 @@ export function getSearchQuery(item, stats) {
     };
   }
 
-  const matched = matchStatsOnItem(item, regexStats);
+  const rawMatched = matchStatsOnItem(item, regexStats);
+
+  // Remap global stats to their (Local) variant based on item category
+  // (e.g. a weapon's "#% increased Attack Speed" -> explicit.stat_210067635).
+  const itemCategory = unique ? undefined : getCategoryFromItemText(item);
+  const matched = applyLocalStatRemap(rawMatched, itemCategory);
 
   // ✨ NOVO: Detectar runas
   const runeStats = matched.filter(stat =>

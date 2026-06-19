@@ -1,0 +1,58 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - text: Logged in as
+          - link "SlesherPlay#5909" [ref=e11] [cursor=pointer]:
+            - /url: /account/view-profile/SlesherPlay-5909
+        - link "30" [ref=e12] [cursor=pointer]:
+          - /url: https://www.pathofexile.com/shop/purchase
+          - generic [ref=e13]: "30"
+      - generic [ref=e15] [cursor=pointer]:
+        - generic [ref=e16]: Log Out
+        - generic [ref=e18]: Switch Account
+        - link "Messages" [ref=e19]:
+          - /url: /private-messages
+        - link "Contact Support" [ref=e20]:
+          - /url: https://www.pathofexile.com/support
+    - link "BACK TO MAIN SITE" [ref=e22] [cursor=pointer]:
+      - /url: https://pathofexile2.com/
+    - link [ref=e24] [cursor=pointer]:
+      - /url: /trade2
+      - img [ref=e25]
+    - generic [ref=e26]:
+      - link "English" [ref=e27] [cursor=pointer]:
+        - /url: https://www.pathofexile.com/trade2
+        - img "English" [ref=e29]
+      - link "Português Brasileiro" [ref=e30] [cursor=pointer]:
+        - /url: https://br.pathofexile.com/trade2
+        - img "Português Brasileiro" [ref=e32]
+      - link "Русский" [ref=e33] [cursor=pointer]:
+        - /url: https://ru.pathofexile.com/trade2
+        - img "Русский" [ref=e35]
+      - link "ไทย" [ref=e36] [cursor=pointer]:
+        - /url: https://th.pathofexile.com/trade2
+        - img "ไทย" [ref=e38]
+      - link "Deutsch" [ref=e39] [cursor=pointer]:
+        - /url: https://de.pathofexile.com/trade2
+        - img "Deutsch" [ref=e41]
+      - link "Français" [ref=e42] [cursor=pointer]:
+        - /url: https://fr.pathofexile.com/trade2
+        - img "Français" [ref=e44]
+      - link "Español" [ref=e45] [cursor=pointer]:
+        - /url: https://es.pathofexile.com/trade2
+        - img "Español" [ref=e47]
+      - link "日本語" [ref=e48] [cursor=pointer]:
+        - /url: https://jp.pathofexile.com/trade2
+        - img "日本語" [ref=e50]
+      - link "한국어" [ref=e51] [cursor=pointer]:
+        - /url: https://poe.kakaogames.com/trade2
+        - img "한국어" [ref=e53]
+  - generic [ref=e58]:
+    - generic [ref=e59]:
+      - text: © 2010 - 2026
+      - link "Grinding Gear Games" [ref=e60] [cursor=pointer]:
+        - /url: http://www.grindinggear.com
+    - link "Terms of Use, Privacy Notice and Cookies Notice" [ref=e62] [cursor=pointer]:
+      - /url: /legal/terms-of-use-and-privacy-policy

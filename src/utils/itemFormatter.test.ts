@@ -87,6 +87,50 @@ describe("itemFormatter", () => {
     expect(result).not.toContain("[SingleKey]");
   });
 
+  test("handles PoE 0.5.3 object-shaped explicit mods", () => {
+    // As of patch 0.5.3 the trade fetch API returns explicitMods (and other
+    // affix arrays) as objects { description, hash, mods } instead of strings.
+    const item: TradeItem = {
+      id: "test",
+      realm: "poe2",
+      verified: true,
+      w: 1,
+      h: 1,
+      icon: "",
+      league: "Test",
+      name: "Beast Pillar",
+      typeLine: "Barrier Quarterstaff",
+      baseType: "Barrier Quarterstaff",
+      rarity: "Rare",
+      frameType: 2,
+      ilvl: 37,
+      identified: true,
+      // implicit stays a string in 0.5.3
+      implicitMods: ["+18% to [Block] chance"],
+      explicitMods: [
+        {
+          description: "Adds 2 to 21 [Lightning|Lightning] Damage",
+          hash: "stat.explicit.stat_3336890334",
+          mods: [],
+        },
+        {
+          description: "+148 to [Accuracy|Accuracy] Rating",
+          hash: "stat.explicit.stat_691932474",
+          mods: [],
+        },
+      ],
+    };
+
+    const result = formatItemText(item);
+
+    expect(result).toContain("+18% to Block chance (implicit)");
+    expect(result).toContain("Adds 2 to 21 Lightning Damage");
+    expect(result).toContain("+148 to Accuracy Rating");
+    // Must never leak object stringification
+    expect(result).not.toContain("[object Object]");
+    expect(result).not.toContain("[Lightning|");
+  });
+
   test("handles items without optional fields", () => {
     const item: TradeItem = {
       id: "test",

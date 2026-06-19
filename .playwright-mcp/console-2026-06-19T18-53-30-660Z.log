@@ -1,0 +1,6 @@
+[  100030ms] [LOG] [PoE Search] [Settings] initialize() called @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7181
+[  100053ms] [LOG] [PoE Search] [Settings] loaded debugLogging: false @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7185
+[  100059ms] [LOG] [PoE Search] Sentry initialized @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:15239
+[  118597ms] [ERROR] [PoE Search] [Interceptor] Failed to copy {} @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7221
+[  131939ms] [ERROR] [PoE Search] [Interceptor] Failed to copy {} @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7221
+[  134571ms] [ERROR] [PoE Search] [Interceptor] Failed to copy {} @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7221

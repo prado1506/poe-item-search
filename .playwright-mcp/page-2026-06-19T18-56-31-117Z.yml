@@ -1,0 +1,757 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - text: Logged in as
+            - link "SlesherPlay#5909" [ref=e11] [cursor=pointer]:
+              - /url: /account/view-profile/SlesherPlay-5909
+          - link "30" [ref=e12] [cursor=pointer]:
+            - /url: https://www.pathofexile.com/shop/purchase
+            - generic [ref=e13]: "30"
+        - generic [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: Log Out
+          - generic [ref=e18]: Switch Account
+          - link "Messages" [ref=e19]:
+            - /url: /private-messages
+          - link "Contact Support" [ref=e20]:
+            - /url: https://www.pathofexile.com/support
+      - link "BACK TO MAIN SITE" [ref=e22] [cursor=pointer]:
+        - /url: https://pathofexile2.com/
+      - link [ref=e24] [cursor=pointer]:
+        - /url: /trade2
+        - img [ref=e25]
+      - generic [ref=e26]:
+        - link "English" [ref=e27] [cursor=pointer]:
+          - /url: https://www.pathofexile.com/trade2
+          - img "English" [ref=e29]
+        - link "Português Brasileiro" [ref=e30] [cursor=pointer]:
+          - /url: https://br.pathofexile.com/trade2
+          - img "Português Brasileiro" [ref=e32]
+        - link "Русский" [ref=e33] [cursor=pointer]:
+          - /url: https://ru.pathofexile.com/trade2
+          - img "Русский" [ref=e35]
+        - link "ไทย" [ref=e36] [cursor=pointer]:
+          - /url: https://th.pathofexile.com/trade2
+          - img "ไทย" [ref=e38]
+        - link "Deutsch" [ref=e39] [cursor=pointer]:
+          - /url: https://de.pathofexile.com/trade2
+          - img "Deutsch" [ref=e41]
+        - link "Français" [ref=e42] [cursor=pointer]:
+          - /url: https://fr.pathofexile.com/trade2
+          - img "Français" [ref=e44]
+        - link "Español" [ref=e45] [cursor=pointer]:
+          - /url: https://es.pathofexile.com/trade2
+          - img "Español" [ref=e47]
+        - link "日本語" [ref=e48] [cursor=pointer]:
+          - /url: https://jp.pathofexile.com/trade2
+          - img "日本語" [ref=e50]
+        - link "한국어" [ref=e51] [cursor=pointer]:
+          - /url: https://poe.kakaogames.com/trade2
+          - img "한국어" [ref=e53]
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - tablist [ref=e65]:
+            - link "Search Listed Items" [ref=e66]:
+              - /url: /trade2/search/Runes of Aldur
+            - link "Bulk Item Exchange" [ref=e67] [cursor=pointer]:
+              - /url: /trade2/exchange/Runes of Aldur
+          - tablist [ref=e68]:
+            - link "About" [ref=e69] [cursor=pointer]:
+              - /url: /trade2/about
+            - link "Settings" [ref=e70] [cursor=pointer]:
+              - /url: /trade2/settings
+            - link "History" [ref=e71] [cursor=pointer]:
+              - /url: /trade2/history
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - textbox "Search Items..." [active] [ref=e79]
+            - generic [ref=e80]:
+              - generic [ref=e83]:
+                - generic: PoE2 - Runes of Aldur
+              - generic [ref=e86]:
+                - generic: Instant Buyout
+          - generic:
+            - generic:
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - generic [ref=e90]:
+                    - button [ref=e92] [cursor=pointer]
+                    - generic [ref=e93]:
+                      - generic [ref=e94] [cursor=pointer]: Type Filters
+                      - button "Clear Filter Group" [ref=e96] [cursor=pointer]
+                  - generic:
+                    - generic [ref=e98]:
+                      - generic [ref=e99]: Item Category
+                      - textbox "Quarterstaff" [ref=e104] [cursor=pointer]
+                    - generic [ref=e106]:
+                      - generic [ref=e107]: Item Rarity
+                      - textbox "Any" [ref=e112] [cursor=pointer]
+                    - generic [ref=e114]:
+                      - generic [ref=e115]: Item Level
+                      - spinbutton [ref=e117]
+                      - spinbutton [ref=e119]
+                    - generic [ref=e121]:
+                      - generic [ref=e122]: Item Quality
+                      - spinbutton [ref=e124]
+                      - spinbutton [ref=e126]
+                - generic [ref=e127]:
+                  - generic [ref=e129]:
+                    - button [ref=e131] [cursor=pointer]
+                    - generic [ref=e133] [cursor=pointer]: Equipment Filters
+                  - text: (?) (?) (?) (?) (?) (?)
+                - generic [ref=e136]:
+                  - button [ref=e138] [cursor=pointer]
+                  - generic [ref=e140] [cursor=pointer]: Requirements
+                - generic [ref=e141]:
+                  - generic [ref=e143]:
+                    - button [ref=e145] [cursor=pointer]
+                    - generic [ref=e147] [cursor=pointer]: Endgame Filters
+                  - text: (?)
+                - generic [ref=e150]:
+                  - button [ref=e152] [cursor=pointer]
+                  - generic [ref=e154] [cursor=pointer]: Miscellaneous
+                - generic [ref=e157]:
+                  - button [ref=e159] [cursor=pointer]
+                  - generic [ref=e161] [cursor=pointer]: Trade Filters
+              - generic [ref=e162]:
+                - generic [ref=e163]:
+                  - generic [ref=e165]:
+                    - button [ref=e167] [cursor=pointer]
+                    - generic [ref=e168]:
+                      - generic [ref=e169] [cursor=pointer]: Stat Filters
+                      - button [ref=e171] [cursor=pointer]
+                    - button [ref=e173] [cursor=pointer]
+                  - generic [ref=e177]:
+                    - textbox "+ Add Stat Filter" [ref=e180] [cursor=pointer]
+                    - text: ↵ ↵
+                - textbox "+ Add Stat Group" [ref=e186] [cursor=pointer]
+                - generic [ref=e187]:
+                  - button "Dismiss News" [ref=e189] [cursor=pointer]
+                  - link [ref=e190] [cursor=pointer]:
+                    - /url: https://pathofexile.com/purchase
+                    - img [ref=e191]
+          - generic [ref=e192]:
+            - button "Activate Live Search" [ref=e194] [cursor=pointer]: Activate Live Search
+            - button "Search" [ref=e197] [cursor=pointer]
+            - generic [ref=e198]:
+              - button "Clear" [ref=e199] [cursor=pointer]
+              - button "Show Filters" [ref=e200] [cursor=pointer]: Show Filters
+        - generic [ref=e203]:
+          - generic [ref=e204]:
+            - heading "Showing 100 results (10000 matched)" [level=3] [ref=e205]
+            - button "Default" [ref=e206] [cursor=pointer]
+            - button "Compact" [ref=e207] [cursor=pointer]
+            - button "Compact Two-Columned" [ref=e208] [cursor=pointer]
+          - generic [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - button "Copy Item" [ref=e212] [cursor=pointer]
+                - generic [ref=e216]: Verified
+              - generic [ref=e217]:
+                - generic [ref=e218]:
+                  - generic [ref=e219]:
+                    - generic [ref=e220]: Agony Pile
+                    - generic [ref=e221]: Guardian Quarterstaff
+                  - generic [ref=e222]:
+                    - generic [ref=e224]: Quarterstaff
+                    - generic [ref=e226] [cursor=pointer]: "Physical Damage: 52-86"
+                    - generic [ref=e228] [cursor=pointer]: "Elemental Damage: 23-33, 22-35"
+                    - generic [ref=e230] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e232] [cursor=pointer]: "Attacks per Second: 1.40"
+                    - separator [ref=e233]
+                    - generic [ref=e235] [cursor=pointer]: "Item Level: 68"
+                    - generic [ref=e237]:
+                      - text: "Requires:"
+                      - generic [ref=e238] [cursor=pointer]: Level 62
+                      - text: ","
+                      - generic [ref=e239] [cursor=pointer]: 85 Dex
+                      - text: ","
+                      - generic [ref=e240] [cursor=pointer]: 34 Int
+                    - separator [ref=e241]
+                    - generic [ref=e243] [cursor=pointer]: +18% to Block chance
+                    - separator [ref=e244]
+                    - generic [ref=e245]:
+                      - generic [ref=e246] [cursor=pointer]: Adds 23 to 33 Fire Damage
+                      - generic [ref=e247]: P7
+                    - generic [ref=e248]:
+                      - generic [ref=e249] [cursor=pointer]: Adds 22 to 35 Cold Damage
+                      - generic [ref=e250]: P7
+                    - generic [ref=e251]:
+                      - generic [ref=e252] [cursor=pointer]: Gain 16 Mana per enemy killed
+                      - generic [ref=e253]: S4
+                    - generic [ref=e254]:
+                      - generic [ref=e255] [cursor=pointer]: Causes 45% increased Stun Buildup
+                      - generic [ref=e256]: S4
+                    - separator [ref=e257]
+                    - generic [ref=e258]: ~b/o 1 aug
+                - generic [ref=e259]:
+                  - generic [ref=e260] [cursor=pointer]: "DPS: 194.6"
+                  - generic [ref=e261] [cursor=pointer]: "Physical DPS: 115.5"
+                  - generic [ref=e262] [cursor=pointer]: "Elemental DPS: 79.1"
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - generic [ref=e266] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e267]:
+                      - img "aug" [ref=e268]
+                      - text: Orb of Augmentation
+                  - generic [ref=e269] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "19.922"
+                - generic [ref=e271] [cursor=pointer]:
+                  - link "Barivital#2900" [ref=e273]:
+                    - /url: /account/view-profile/Barivital%232900
+                  - text: listed 5 hours ago
+                - group [ref=e274]:
+                  - generic "Contact Options" [ref=e275]:
+                    - button "Travel to Hideout" [ref=e276] [cursor=pointer]
+                  - button "Ignore Player" [ref=e278] [cursor=pointer]
+            - generic [ref=e279]:
+              - generic [ref=e280]:
+                - button "Copy Item" [ref=e281] [cursor=pointer]
+                - generic [ref=e285]: Verified
+              - generic [ref=e286]:
+                - generic [ref=e287]:
+                  - generic [ref=e288]:
+                    - generic [ref=e289]: Tempest Call
+                    - generic [ref=e290]: Hefty Quarterstaff
+                  - generic [ref=e291]:
+                    - generic [ref=e293]: Quarterstaff
+                    - generic [ref=e295] [cursor=pointer]: "Physical Damage: 56-116"
+                    - generic [ref=e297] [cursor=pointer]: "Fire Damage: 14-24"
+                    - generic [ref=e299] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e301] [cursor=pointer]: "Attacks per Second: 1.30"
+                    - separator [ref=e302]
+                    - generic [ref=e304] [cursor=pointer]: "Item Level: 47"
+                    - generic [ref=e306]:
+                      - text: "Requires:"
+                      - generic [ref=e307] [cursor=pointer]: Level 45
+                      - text: ","
+                      - generic [ref=e308] [cursor=pointer]: 63 Dex
+                      - text: ","
+                      - generic [ref=e309] [cursor=pointer]: 26 Int
+                    - separator [ref=e310]
+                    - generic [ref=e312] [cursor=pointer]: 46% chance to Daze on Hit
+                    - separator [ref=e313]
+                    - generic [ref=e314]:
+                      - generic [ref=e315] [cursor=pointer]: 43% increased Physical Damage
+                      - generic [ref=e316]: P5
+                    - generic [ref=e317]:
+                      - generic [ref=e318] [cursor=pointer]: Adds 14 to 24 Fire Damage
+                      - generic [ref=e319]: P8
+                    - generic [ref=e320]:
+                      - generic [ref=e321] [cursor=pointer]: +87 to Accuracy Rating
+                      - generic [ref=e322]: P5
+                    - generic [ref=e323]:
+                      - generic [ref=e324] [cursor=pointer]: Gain 5 Life per enemy killed
+                      - generic [ref=e325]: S8
+                    - generic [ref=e326]:
+                      - generic [ref=e327] [cursor=pointer]: Causes 41% increased Stun Buildup
+                      - generic [ref=e328]: S4
+                    - separator [ref=e329]
+                    - generic [ref=e330]: ~b/o 1 aug
+                - generic [ref=e331]:
+                  - generic [ref=e332] [cursor=pointer]: "DPS: 158.6"
+                  - generic [ref=e333] [cursor=pointer]: "Physical DPS: 133.9"
+                  - generic [ref=e334] [cursor=pointer]: "Elemental DPS: 24.7"
+              - generic [ref=e336]:
+                - generic [ref=e337]:
+                  - generic [ref=e338] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e339]:
+                      - img "aug" [ref=e340]
+                      - text: Orb of Augmentation
+                  - generic [ref=e341] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "10.617"
+                - generic [ref=e343] [cursor=pointer]:
+                  - link "DeviantZ#2732" [ref=e345]:
+                    - /url: /account/view-profile/DeviantZ%232732
+                  - text: listed 4 hours ago
+                - group [ref=e346]:
+                  - generic "Contact Options" [ref=e347]:
+                    - button "Travel to Hideout" [ref=e348] [cursor=pointer]
+                  - button "Ignore Player" [ref=e350] [cursor=pointer]
+            - generic [ref=e351]:
+              - generic [ref=e352]:
+                - button "Copy Item" [ref=e353] [cursor=pointer]
+                - generic [ref=e357]: Verified
+              - generic [ref=e358]:
+                - generic [ref=e359]:
+                  - generic [ref=e361]: Arcing Guardian Quarterstaff of Glory
+                  - generic [ref=e362]:
+                    - generic [ref=e364]: Quarterstaff
+                    - generic [ref=e366] [cursor=pointer]: "Physical Damage: 52-86"
+                    - generic [ref=e368] [cursor=pointer]: "Lightning Damage: 5-100"
+                    - generic [ref=e370] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e372] [cursor=pointer]: "Attacks per Second: 1.40"
+                    - separator [ref=e373]
+                    - generic [ref=e375] [cursor=pointer]: "Item Level: 68"
+                    - generic [ref=e377]:
+                      - text: "Requires:"
+                      - generic [ref=e378] [cursor=pointer]: Level 62
+                      - text: ","
+                      - generic [ref=e379] [cursor=pointer]: 85 Dex
+                      - text: ","
+                      - generic [ref=e380] [cursor=pointer]: 34 Int
+                    - separator [ref=e381]
+                    - generic [ref=e383] [cursor=pointer]: +18% to Block chance
+                    - separator [ref=e384]
+                    - generic [ref=e385]:
+                      - generic [ref=e386] [cursor=pointer]: Adds 5 to 100 Lightning Damage
+                      - generic [ref=e387]: P5
+                    - generic [ref=e388]:
+                      - generic [ref=e389] [cursor=pointer]: Gain 65 Life per enemy killed
+                      - generic [ref=e390]: S2
+                    - separator [ref=e391]
+                    - generic [ref=e392]: ~b/o 1 aug
+                - generic [ref=e393]:
+                  - generic [ref=e394] [cursor=pointer]: "DPS: 189"
+                  - generic [ref=e395] [cursor=pointer]: "Physical DPS: 115.5"
+                  - generic [ref=e396] [cursor=pointer]: "Elemental DPS: 73.5"
+              - generic [ref=e398]:
+                - generic [ref=e399]:
+                  - generic [ref=e400] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e401]:
+                      - img "aug" [ref=e402]
+                      - text: Orb of Augmentation
+                  - generic [ref=e403] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "8.474"
+                - generic [ref=e405] [cursor=pointer]:
+                  - link "tixt_sa0#9125" [ref=e407]:
+                    - /url: /account/view-profile/tixt_sa0%239125
+                  - text: listed 4 minutes ago
+                - group [ref=e408]:
+                  - generic "Contact Options" [ref=e409]:
+                    - button "Travel to Hideout" [ref=e410] [cursor=pointer]
+                  - button "Ignore Player" [ref=e412] [cursor=pointer]
+            - generic [ref=e413]:
+              - generic [ref=e414]:
+                - button "Copy Item" [ref=e415] [cursor=pointer]
+                - generic [ref=e419]: Verified
+              - generic [ref=e420]:
+                - generic [ref=e421]:
+                  - generic [ref=e422]:
+                    - generic [ref=e423]: Soul Pillar
+                    - generic [ref=e424]: Hefty Quarterstaff
+                  - generic [ref=e425]:
+                    - generic [ref=e427]: Quarterstaff
+                    - generic [ref=e429] [cursor=pointer]: "Physical Damage: 79-164"
+                    - generic [ref=e431] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e433] [cursor=pointer]: "Attacks per Second: 1.30"
+                    - separator [ref=e434]
+                    - generic [ref=e436] [cursor=pointer]: "Item Level: 67"
+                    - generic [ref=e438]:
+                      - text: "Requires:"
+                      - generic [ref=e439] [cursor=pointer]: Level 46
+                      - text: ","
+                      - generic [ref=e440] [cursor=pointer]: 53 Dex
+                      - text: ","
+                      - generic [ref=e441] [cursor=pointer]: 22 Int
+                    - separator [ref=e442]
+                    - generic [ref=e444] [cursor=pointer]: 36% chance to Daze on Hit
+                    - separator [ref=e445]
+                    - generic [ref=e446]:
+                      - generic [ref=e447] [cursor=pointer]: 103% increased Physical Damage
+                      - generic [ref=e448]: P5
+                    - generic [ref=e449]:
+                      - generic [ref=e450] [cursor=pointer]: +252 to Accuracy Rating
+                      - generic [ref=e451]: P3
+                    - generic [ref=e452]:
+                      - generic [ref=e453] [cursor=pointer]: 15% reduced Attribute Requirements
+                      - generic [ref=e454]: S5
+                    - generic [ref=e455]:
+                      - generic [ref=e456] [cursor=pointer]: Gain 10 Life per enemy killed
+                      - generic [ref=e457]: S6
+                    - separator [ref=e458]
+                    - generic [ref=e459]: ~b/o 1 aug
+                - generic [ref=e460]:
+                  - generic [ref=e461] [cursor=pointer]: "DPS: 189.8"
+                  - generic [ref=e462] [cursor=pointer]: "Physical DPS: 189.8"
+              - generic [ref=e464]:
+                - generic [ref=e465]:
+                  - generic [ref=e466] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e467]:
+                      - img "aug" [ref=e468]
+                      - text: Orb of Augmentation
+                  - generic [ref=e469] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "20.481"
+                - generic [ref=e471] [cursor=pointer]:
+                  - link "trasbe#8158" [ref=e473]:
+                    - /url: /account/view-profile/trasbe%238158
+                  - text: listed 1 hour ago
+                - group [ref=e474]:
+                  - generic "Contact Options" [ref=e475]:
+                    - button "Travel to Hideout" [ref=e476] [cursor=pointer]
+                  - button "Ignore Player" [ref=e478] [cursor=pointer]
+            - generic [ref=e479]:
+              - generic [ref=e480]:
+                - button "Copy Item" [ref=e481] [cursor=pointer]
+                - generic [ref=e485]: Verified
+              - generic [ref=e486]:
+                - generic [ref=e487]:
+                  - generic [ref=e489]: Unleashed Barrier Quarterstaff of the Locust
+                  - generic [ref=e490]:
+                    - generic [ref=e492]: Quarterstaff
+                    - generic [ref=e494] [cursor=pointer]: "Physical Damage: 35-58"
+                    - generic [ref=e496] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e498] [cursor=pointer]: "Attacks per Second: 1.40"
+                    - separator [ref=e499]
+                    - generic [ref=e501] [cursor=pointer]: "Item Level: 47"
+                    - generic [ref=e503]:
+                      - text: "Requires:"
+                      - generic [ref=e504] [cursor=pointer]: Level 37
+                      - text: ","
+                      - generic [ref=e505] [cursor=pointer]: 52 Dex
+                      - text: ","
+                      - generic [ref=e506] [cursor=pointer]: 22 Int
+                    - separator [ref=e507]
+                    - generic [ref=e509] [cursor=pointer]: +14% to Block chance
+                    - separator [ref=e510]
+                    - generic [ref=e511]:
+                      - generic [ref=e512] [cursor=pointer]: 95% increased Elemental Damage with Attacks
+                      - generic [ref=e513]: P3
+                    - generic [ref=e514]:
+                      - generic [ref=e515] [cursor=pointer]: Leeches 6.48% of Physical Damage as Life
+                      - generic [ref=e516]: S4
+                    - separator [ref=e517]
+                    - generic [ref=e518]: ~b/o 1 aug
+                - generic [ref=e519]:
+                  - generic [ref=e520] [cursor=pointer]: "DPS: 78.4"
+                  - generic [ref=e521] [cursor=pointer]: "Physical DPS: 78.4"
+              - generic [ref=e523]:
+                - generic [ref=e524]:
+                  - generic [ref=e525] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e526]:
+                      - img "aug" [ref=e527]
+                      - text: Orb of Augmentation
+                  - generic [ref=e528] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "3.332"
+                - generic [ref=e530] [cursor=pointer]:
+                  - link "Dr4xX#6596" [ref=e532]:
+                    - /url: /account/view-profile/Dr4xX%236596
+                  - text: listed 1 hour ago
+                - group [ref=e533]:
+                  - generic "Contact Options" [ref=e534]:
+                    - button "Travel to Hideout" [ref=e535] [cursor=pointer]
+                  - button "Ignore Player" [ref=e537] [cursor=pointer]
+            - generic [ref=e538]:
+              - generic [ref=e539]:
+                - button "Copy Item" [ref=e540] [cursor=pointer]
+                - generic [ref=e546]: Verified
+              - generic [ref=e547]:
+                - generic [ref=e548]:
+                  - generic [ref=e549]:
+                    - generic [ref=e550]: Maelström Mast
+                    - generic [ref=e551]: Sinister Quarterstaff
+                  - generic [ref=e552]:
+                    - generic [ref=e554]: Quarterstaff
+                    - generic [ref=e556] [cursor=pointer]: "Physical Damage: 75-124"
+                    - generic [ref=e558] [cursor=pointer]: "Critical Hit Chance: 12.00%"
+                    - generic [ref=e560] [cursor=pointer]: "Attacks per Second: 1.60"
+                    - separator [ref=e561]
+                    - generic [ref=e563] [cursor=pointer]: "Item Level: 75"
+                    - generic [ref=e565]:
+                      - text: "Requires:"
+                      - generic [ref=e566] [cursor=pointer]: Level 67
+                      - text: ","
+                      - generic [ref=e567] [cursor=pointer]: 104 Dex
+                      - text: ","
+                      - generic [ref=e568] [cursor=pointer]: 41 Int
+                    - separator [ref=e569]
+                    - generic [ref=e570]:
+                      - generic [ref=e571] [cursor=pointer]: 36% increased Physical Damage
+                      - generic [ref=e572]: P5
+                    - generic [ref=e573]:
+                      - generic [ref=e574] [cursor=pointer]: +94 to Accuracy Rating
+                      - generic [ref=e575]: P5
+                    - generic [ref=e576]:
+                      - generic [ref=e577] [cursor=pointer]: +14% to Critical Damage Bonus
+                      - generic [ref=e578]: S4
+                    - generic [ref=e579]:
+                      - generic [ref=e580] [cursor=pointer]: 14% increased Attack Speed
+                      - generic [ref=e581]: S5
+                    - generic [ref=e582]:
+                      - generic [ref=e583] [cursor=pointer]: Grants 5 Life per Enemy Hit
+                      - generic [ref=e584]: S1
+                    - separator [ref=e585]
+                    - generic [ref=e586]: ~b/o 1 aug
+                - generic [ref=e587]:
+                  - generic [ref=e588] [cursor=pointer]: "DPS: 191.2"
+                  - generic [ref=e589] [cursor=pointer]: "Physical DPS: 191.2"
+              - generic [ref=e591]:
+                - generic [ref=e592]:
+                  - generic [ref=e593] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e594]:
+                      - img "aug" [ref=e595]
+                      - text: Orb of Augmentation
+                  - generic [ref=e596] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "37.650"
+                - generic [ref=e598] [cursor=pointer]:
+                  - link "Moräne#0192" [ref=e600]:
+                    - /url: /account/view-profile/Mor%C3%A4ne%230192
+                  - text: listed 7 minutes ago
+                - group [ref=e601]:
+                  - generic "Contact Options" [ref=e602]:
+                    - button "Travel to Hideout" [ref=e603] [cursor=pointer]
+                  - button "Ignore Player" [ref=e605] [cursor=pointer]
+            - generic [ref=e606]:
+              - generic [ref=e607]:
+                - button "Copy Item" [ref=e608] [cursor=pointer]
+                - generic [ref=e614]: Verified
+              - generic [ref=e615]:
+                - generic [ref=e616]:
+                  - generic [ref=e618]: Smoking Razor Quarterstaff of the Champion
+                  - generic [ref=e619]:
+                    - generic [ref=e621]: Quarterstaff
+                    - generic [ref=e623] [cursor=pointer]: "Physical Damage: 65-108"
+                    - generic [ref=e625] [cursor=pointer]: "Fire Damage: 12-26"
+                    - generic [ref=e627] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e629] [cursor=pointer]: "Attacks per Second: 1.40"
+                    - separator [ref=e630]
+                    - generic [ref=e632] [cursor=pointer]: "Item Level: 79"
+                    - generic [ref=e634]:
+                      - text: "Requires:"
+                      - generic [ref=e635] [cursor=pointer]: Level 77
+                      - text: ","
+                      - generic [ref=e636] [cursor=pointer]: 127 Dex
+                      - text: ","
+                      - generic [ref=e637] [cursor=pointer]: 50 Int
+                    - separator [ref=e638]
+                    - generic [ref=e639]:
+                      - generic [ref=e640] [cursor=pointer]: Adds 12 to 26 Fire Damage
+                      - generic [ref=e641]: P8
+                    - generic [ref=e642]:
+                      - generic [ref=e643] [cursor=pointer]: Causes 71% increased Stun Buildup
+                      - generic [ref=e644]: S1
+                    - separator [ref=e645]
+                    - generic [ref=e646]: ~b/o 1 aug
+                - generic [ref=e647]:
+                  - generic [ref=e648] [cursor=pointer]: "DPS: 172.2"
+                  - generic [ref=e649] [cursor=pointer]: "Physical DPS: 145.6"
+                  - generic [ref=e650] [cursor=pointer]: "Elemental DPS: 26.6"
+              - generic [ref=e652]:
+                - generic [ref=e653]:
+                  - generic [ref=e654] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e655]:
+                      - img "aug" [ref=e656]
+                      - text: Orb of Augmentation
+                  - generic [ref=e657] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "12.645"
+                - generic [ref=e659] [cursor=pointer]:
+                  - link "삼대오백#3349" [ref=e661]:
+                    - /url: /account/view-profile/%EC%82%BC%EB%8C%80%EC%98%A4%EB%B0%B1%233349
+                  - text: listed 7 hours ago
+                - group [ref=e662]:
+                  - generic "Contact Options" [ref=e663]:
+                    - button "Travel to Hideout" [ref=e664] [cursor=pointer]
+                  - button "Ignore Player" [ref=e666] [cursor=pointer]
+            - generic [ref=e667]:
+              - generic [ref=e668]:
+                - button "Copy Item" [ref=e669] [cursor=pointer]
+                - generic [ref=e673]: Verified
+              - generic [ref=e674]:
+                - generic [ref=e675]:
+                  - generic [ref=e677]: Annealed Bladed Quarterstaff of Nourishment
+                  - generic [ref=e678]:
+                    - generic [ref=e680]: Quarterstaff
+                    - generic [ref=e682] [cursor=pointer]: "Physical Damage: 71-128"
+                    - generic [ref=e684] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e686] [cursor=pointer]: "Attacks per Second: 1.40"
+                    - separator [ref=e687]
+                    - generic [ref=e689] [cursor=pointer]: "Item Level: 67"
+                    - generic [ref=e691]:
+                      - text: "Requires:"
+                      - generic [ref=e692] [cursor=pointer]: Level 59
+                      - text: ","
+                      - generic [ref=e693] [cursor=pointer]: 81 Dex
+                      - text: ","
+                      - generic [ref=e694] [cursor=pointer]: 33 Int
+                    - separator [ref=e695]
+                    - generic [ref=e696]:
+                      - generic [ref=e697] [cursor=pointer]: Adds 26 to 34 Physical Damage
+                      - generic [ref=e698]: P4
+                    - generic [ref=e699]:
+                      - generic [ref=e700] [cursor=pointer]: Grants 5 Life per Enemy Hit
+                      - generic [ref=e701]: S1
+                    - separator [ref=e702]
+                    - generic [ref=e703]: ~b/o 1 aug
+                - generic [ref=e704]:
+                  - generic [ref=e705] [cursor=pointer]: "DPS: 167.3"
+                  - generic [ref=e706] [cursor=pointer]: "Physical DPS: 167.3"
+              - generic [ref=e708]:
+                - generic [ref=e709]:
+                  - generic [ref=e710] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e711]:
+                      - img "aug" [ref=e712]
+                      - text: Orb of Augmentation
+                  - generic [ref=e713] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "6.972"
+                - generic [ref=e715] [cursor=pointer]:
+                  - link "griff8053#2615" [ref=e717]:
+                    - /url: /account/view-profile/griff8053%232615
+                  - text: listed 1 hour ago
+                - group [ref=e718]:
+                  - generic "Contact Options" [ref=e719]:
+                    - button "Travel to Hideout" [ref=e720] [cursor=pointer]
+                  - button "Ignore Player" [ref=e722] [cursor=pointer]
+            - generic [ref=e723]:
+              - generic [ref=e724]:
+                - button "Copy Item" [ref=e725] [cursor=pointer]
+                - generic [ref=e729]: Verified
+              - generic [ref=e730]:
+                - generic [ref=e731]:
+                  - generic [ref=e732]:
+                    - generic [ref=e733]: Soul Pole
+                    - generic [ref=e734]: Steelpoint Quarterstaff
+                  - generic [ref=e735]:
+                    - generic [ref=e737]: Quarterstaff
+                    - generic [ref=e739] [cursor=pointer]: "Physical Damage: 28-51"
+                    - generic [ref=e741] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e743] [cursor=pointer]: "Attacks per Second: 1.68"
+                    - separator [ref=e744]
+                    - generic [ref=e746] [cursor=pointer]: "Item Level: 55"
+                    - generic [ref=e748]:
+                      - text: "Requires:"
+                      - generic [ref=e749] [cursor=pointer]: Level 38
+                      - text: ","
+                      - generic [ref=e750] [cursor=pointer]: 41 Dex
+                      - text: ","
+                      - generic [ref=e751] [cursor=pointer]: 18 Int
+                    - separator [ref=e752]
+                    - generic [ref=e753]:
+                      - generic [ref=e754] [cursor=pointer]: +185 to Accuracy Rating
+                      - generic [ref=e755]: P4
+                    - generic [ref=e756]:
+                      - generic [ref=e757] [cursor=pointer]: +15% to Critical Damage Bonus
+                      - generic [ref=e758]: S4
+                    - generic [ref=e759]:
+                      - generic [ref=e760] [cursor=pointer]: 20% increased Attack Speed
+                      - generic [ref=e761]: S3
+                    - generic [ref=e762]:
+                      - generic [ref=e763] [cursor=pointer]: 12% increased Stun Duration
+                      - generic [ref=e764]: S6
+                    - separator [ref=e765]
+                    - generic [ref=e766]: ~b/o 1 aug
+                - generic [ref=e767]:
+                  - generic [ref=e768] [cursor=pointer]: "DPS: 79.8"
+                  - generic [ref=e769] [cursor=pointer]: "Physical DPS: 79.8"
+              - generic [ref=e771]:
+                - generic [ref=e772]:
+                  - generic [ref=e773] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e774]:
+                      - img "aug" [ref=e775]
+                      - text: Orb of Augmentation
+                  - generic [ref=e776] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "11.031"
+                - generic [ref=e778] [cursor=pointer]:
+                  - link "ckh001#3809" [ref=e780]:
+                    - /url: /account/view-profile/ckh001%233809
+                  - text: listed 5 hours ago
+                - group [ref=e781]:
+                  - generic "Contact Options" [ref=e782]:
+                    - button "Travel to Hideout" [ref=e783] [cursor=pointer]
+                  - button "Ignore Player" [ref=e785] [cursor=pointer]
+            - generic [ref=e786]:
+              - generic [ref=e787]:
+                - button "Copy Item" [ref=e788] [cursor=pointer]
+                - generic [ref=e792]: Verified
+              - generic [ref=e793]:
+                - generic [ref=e794]:
+                  - generic [ref=e795]:
+                    - generic [ref=e796]: Fate Call
+                    - generic [ref=e797]: Guardian Quarterstaff
+                  - generic [ref=e798]:
+                    - generic [ref=e800]: Quarterstaff
+                    - generic [ref=e802] [cursor=pointer]: "Physical Damage: 52-86"
+                    - generic [ref=e804] [cursor=pointer]: "Elemental Damage: 11-27, 7-13"
+                    - generic [ref=e806] [cursor=pointer]: "Critical Hit Chance: 10.00%"
+                    - generic [ref=e808] [cursor=pointer]: "Attacks per Second: 1.49"
+                    - separator [ref=e809]
+                    - generic [ref=e811] [cursor=pointer]: "Item Level: 66"
+                    - generic [ref=e813]:
+                      - text: "Requires:"
+                      - generic [ref=e814] [cursor=pointer]: Level 62
+                      - text: ","
+                      - generic [ref=e815] [cursor=pointer]: 85 Dex
+                      - text: ","
+                      - generic [ref=e816] [cursor=pointer]: 34 Int
+                    - separator [ref=e817]
+                    - generic [ref=e819] [cursor=pointer]: +13% to Block chance
+                    - separator [ref=e820]
+                    - generic [ref=e821]:
+                      - generic [ref=e822] [cursor=pointer]: Adds 11 to 27 Fire Damage
+                      - generic [ref=e823]: P8
+                    - generic [ref=e824]:
+                      - generic [ref=e825] [cursor=pointer]: Adds 7 to 13 Cold Damage
+                      - generic [ref=e826]: P9
+                    - generic [ref=e827]:
+                      - generic [ref=e828] [cursor=pointer]: 6% increased Attack Speed
+                      - generic [ref=e829]: S8
+                    - generic [ref=e830]:
+                      - generic [ref=e831] [cursor=pointer]: +10 to Dexterity
+                      - generic [ref=e832]: S7
+                    - generic [ref=e833]:
+                      - generic [ref=e834] [cursor=pointer]: Gain 28 Life per enemy killed
+                      - generic [ref=e835]: S5
+                    - separator [ref=e836]
+                    - generic [ref=e837]: ~b/o 1 aug
+                - generic [ref=e838]:
+                  - generic [ref=e839] [cursor=pointer]: "DPS: 166.14"
+                  - generic [ref=e840] [cursor=pointer]: "Physical DPS: 122.93"
+                  - generic [ref=e841] [cursor=pointer]: "Elemental DPS: 43.21"
+              - generic [ref=e843]:
+                - generic [ref=e844]:
+                  - generic [ref=e845] [cursor=pointer]:
+                    - text: "Asking Price:"
+                    - text: 1×
+                    - generic [ref=e846]:
+                      - img "aug" [ref=e847]
+                      - text: Orb of Augmentation
+                  - generic [ref=e848] [cursor=pointer]:
+                    - text: "Fee:"
+                    - text: "21.554"
+                - generic [ref=e850] [cursor=pointer]:
+                  - link "DeerDestroyer76#1737" [ref=e852]:
+                    - /url: /account/view-profile/DeerDestroyer76%231737
+                  - text: listed 6 hours ago
+                - group [ref=e853]:
+                  - generic "Contact Options" [ref=e854]:
+                    - button "Travel to Hideout" [ref=e855] [cursor=pointer]
+                  - button "Ignore Player" [ref=e857] [cursor=pointer]
+            - button "Load More" [ref=e859] [cursor=pointer]
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - text: © 2010 - 2026
+        - link "Grinding Gear Games" [ref=e60] [cursor=pointer]:
+          - /url: http://www.grindinggear.com
+      - link "Terms of Use, Privacy Notice and Cookies Notice" [ref=e62] [cursor=pointer]:
+        - /url: /legal/terms-of-use-and-privacy-policy
+  - button "SEARCH" [ref=e860] [cursor=pointer]:
+    - img [ref=e861]
+    - generic: SEARCH

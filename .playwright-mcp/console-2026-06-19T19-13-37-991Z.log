@@ -1,0 +1,93 @@
+[     419ms] [LOG] [PoE Search] [Settings] initialize() called @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7181
+[     437ms] [LOG] [PoE Search] [Settings] loaded debugLogging: false @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7185
+[     438ms] [LOG] [PoE Search] Sentry initialized @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:15301
+[   78466ms] [LOG] [PoE Search] query.stats = [
+  {
+    "type": "and",
+    "filters": [
+      {
+        "id": "explicit.stat_3299347043",
+        "value": {
+          "min": "83"
+        }
+      },
+      {
+        "id": "explicit.stat_691932474",
+        "value": {
+          "min": "148"
+        }
+      },
+      {
+        "id": "explicit.stat_210067635",
+        "value": {
+          "min": "25"
+        }
+      },
+      {
+        "id": "implicit.stat_1702195217",
+        "value": {
+          "min": "18"
+        }
+      }
+    ]
+  }
+] @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:16426
+[   78466ms] [LOG] [PoE Search] query = {
+  "filters": {
+    "type_filters": {
+      "filters": {
+        "category": {
+          "option": "weapon.warstaff"
+        }
+      }
+    },
+    "equipment_filters": {
+      "filters": {
+        "aps": {
+          "min": 1.4
+        },
+        "crit": {
+          "min": 10
+        },
+        "pdps": {
+          "min": 65
+        }
+      },
+      "disabled": false
+    }
+  },
+  "stats": [
+    {
+      "type": "and",
+      "filters": [
+        {
+          "id": "explicit.stat_3299347043",
+          "value": {
+            "min": "83"
+          }
+        },
+        {
+          "id": "explicit.stat_691932474",
+          "value": {
+            "min": "148"
+          }
+        },
+        {
+          "id": "explicit.stat_210067635",
+          "value": {
+            "min": "25"
+          }
+        },
+        {
+          "id": "implicit.stat_1702195217",
+          "value": {
+            "min": "18"
+          }
+        }
+      ]
+    }
+  ]
+} @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:16427
+[   79176ms] [LOG] [PoE Search] [Settings] initialize() called @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7181
+[   79185ms] [LOG] [PoE Search] [Settings] loaded debugLogging: false @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:7185
+[   79188ms] [LOG] [PoE Search] Sentry initialized @ chrome-extension://kilehbelnffhohjmpclfadkaljefldje/content.js:15301

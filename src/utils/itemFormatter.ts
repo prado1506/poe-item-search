@@ -5,6 +5,7 @@
 
 import type {
   TradeItem,
+  TradeItemMod,
   TradeItemProperty,
   TradeItemRequirement,
 } from "@/types/tradeItem";
@@ -155,10 +156,25 @@ function pluralizeItemClass(itemClass: string): string {
 }
 
 /**
+ * Normalize a mod entry to its display text.
+ * Pre-0.5.3 the API returned mods as plain strings; since 0.5.3 some mod
+ * arrays (e.g. explicitMods) return objects { description, hash, mods }.
+ */
+function modText(mod: TradeItemMod): string {
+  if (typeof mod === "string") {
+    return mod;
+  }
+  if (mod && typeof mod === "object" && typeof mod.description === "string") {
+    return mod.description;
+  }
+  return "";
+}
+
+/**
  * Format mods with their suffix type.
  */
-function formatMod(mod: string, suffix?: string): string {
-  const cleanMod = stripBracketNotation(mod);
+function formatMod(mod: TradeItemMod, suffix?: string): string {
+  const cleanMod = stripBracketNotation(modText(mod));
   return suffix ? `${cleanMod} (${suffix})` : cleanMod;
 }
 

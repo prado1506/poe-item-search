@@ -51,6 +51,19 @@ export interface TradeItemExtended {
   };
 }
 
+/**
+ * A single affix entry. Historically the trade fetch API returned mods as
+ * plain strings. As of PoE 0.5.3 explicit (and potentially other) mod arrays
+ * return objects carrying the rendered text in `description`.
+ */
+export interface TradeItemModObject {
+  description: string;
+  hash?: string;
+  mods?: unknown[];
+}
+
+export type TradeItemMod = string | TradeItemModObject;
+
 export interface TradeItem {
   id: string;
   realm: string;
@@ -72,14 +85,14 @@ export interface TradeItem {
   requirements?: TradeItemRequirement[];
   sockets?: TradeItemSocket[];
   socketedItems?: unknown[];
-  implicitMods?: string[];
-  explicitMods?: string[];
-  fracturedMods?: string[];
-  desecratedMods?: string[];
-  mutatedMods?: string[];
-  runeMods?: string[];
-  enchantMods?: string[];
-  craftedMods?: string[];
+  implicitMods?: TradeItemMod[];
+  explicitMods?: TradeItemMod[];
+  fracturedMods?: TradeItemMod[];
+  desecratedMods?: TradeItemMod[];
+  mutatedMods?: TradeItemMod[];
+  runeMods?: TradeItemMod[];
+  enchantMods?: TradeItemMod[];
+  craftedMods?: TradeItemMod[];
   fractured?: boolean;
   desecrated?: boolean;
   mutated?: boolean;

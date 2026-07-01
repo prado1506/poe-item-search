@@ -27,11 +27,36 @@ export interface TradeItemExtendedMod {
   tier: string;
   level: number;
   magnitudes: {
-    hash: string;
+    hash?: string;
     min: string;
     max: string;
   }[];
 }
+
+/**
+ * Object-form mod entry returned by the newer PoE2 trade API. The mod arrays
+ * (explicitMods, implicitMods, ...) used to be plain strings; they now hold
+ * objects that embed the display text, a stat hash, category flags and the
+ * affix metadata (name/tier/magnitudes) that previously lived in extended.mods.
+ */
+export interface TradeItemModObject {
+  description?: string;
+  hash?: string; // e.g. "stat.fractured.stat_1573130764"
+  flags?: {
+    fractured?: boolean;
+    crafted?: boolean;
+    [key: string]: boolean | undefined;
+  };
+  mods?: Array<{
+    name?: string;
+    tier?: string;
+    level?: number;
+    magnitudes?: Array<{ hash?: string; min: string; max: string }>;
+  }>;
+}
+
+/** A mod entry is either the legacy string form or the new object form. */
+export type TradeItemMod = string | TradeItemModObject;
 
 export interface TradeItemExtended {
   ar?: number; // Armour
@@ -45,9 +70,17 @@ export interface TradeItemExtended {
     rune?: TradeItemExtendedMod[];
     enchant?: TradeItemExtendedMod[];
   };
+  // Maps each stat hash to the affix (group) index that produced it. Stats that
+  // share an index belong to the same affix (hybrids). Present per category.
   hashes?: {
-    explicit?: [string, number[]][];
-    implicit?: [string, number[]][];
+    explicit?: [string, number[] | null][];
+    implicit?: [string, number[] | null][];
+    fractured?: [string, number[] | null][];
+    desecrated?: [string, number[] | null][];
+    crafted?: [string, number[] | null][];
+    rune?: [string, number[] | null][];
+    enchant?: [string, number[] | null][];
+    pseudo?: [string, number[] | null][];
   };
 }
 
@@ -72,14 +105,14 @@ export interface TradeItem {
   requirements?: TradeItemRequirement[];
   sockets?: TradeItemSocket[];
   socketedItems?: unknown[];
-  implicitMods?: string[];
-  explicitMods?: string[];
-  fracturedMods?: string[];
-  desecratedMods?: string[];
-  mutatedMods?: string[];
-  runeMods?: string[];
-  enchantMods?: string[];
-  craftedMods?: string[];
+  implicitMods?: TradeItemMod[];
+  explicitMods?: TradeItemMod[];
+  fracturedMods?: TradeItemMod[];
+  desecratedMods?: TradeItemMod[];
+  mutatedMods?: TradeItemMod[];
+  runeMods?: TradeItemMod[];
+  enchantMods?: TradeItemMod[];
+  craftedMods?: TradeItemMod[];
   fractured?: boolean;
   desecrated?: boolean;
   mutated?: boolean;

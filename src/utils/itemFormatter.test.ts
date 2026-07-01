@@ -257,4 +257,163 @@ describe("itemFormatter", () => {
     expect(result).toContain('{ Suffix Modifier "of the Drought" (Tier: 2) }\nLeeches 7.89(7-7.9)% of Physical Damage as Mana');
     expect(result).toContain('{ Crafted Prefix Modifier }\nAdds 4 to 81 Lightning Damage');
   });
+
+  test("does not throw when a mod entry is an unexpected primitive", () => {
+    // The fetch response is cast straight to TradeItem with no runtime
+    // validation, so stripBracketNotation must tolerate non-strings.
+    const item = {
+      rarity: "Normal",
+      typeLine: "Runes of Aldur",
+      ilvl: 80,
+      runeMods: [123 as unknown as string, "Adds [Fire|Fire] Damage"],
+    } as TradeItem;
+
+    expect(() => formatItemText(item)).not.toThrow();
+    const result = formatItemText(item);
+    expect(result).toContain("Adds Fire Damage (rune)");
+    expect(result).toContain("123 (rune)");
+  });
+
+  test("formats object-form mods from the newer PoE2 trade API", () => {
+    // The API migrated mod arrays from string[] to objects that embed the
+    // display text, stat hash, category flags and affix metadata, while
+    // extended.mods is now empty. Fractured/crafted mods are folded into
+    // explicitMods and must be relabeled from their hash/flags.
+    const item = {
+      rarity: "Rare",
+      name: "Empyrean Mitts",
+      typeLine: "Grand Bracers",
+      ilvl: 82,
+      corrupted: true,
+      runeMods: ["Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]"],
+      explicitMods: [
+        {
+          description: "Adds 29 to 43 [Fire] damage to [Attack|Attacks]",
+          hash: "stat.fractured.stat_1573130764",
+          flags: { fractured: true },
+          mods: [
+            {
+              name: "Cremating",
+              tier: "P1",
+              level: 75,
+              magnitudes: [
+                { min: "25", max: "29" },
+                { min: "37", max: "45" },
+              ],
+            },
+          ],
+        },
+        {
+          description: "29% increased [CriticalDamageBonus|Critical Damage Bonus]",
+          hash: "stat.crafted.stat_3556824919",
+          flags: { crafted: true },
+          mods: [
+            { name: "of Fury", tier: "S2", level: 45, magnitudes: [{ min: "25", max: "29" }] },
+          ],
+        },
+      ],
+    } as unknown as TradeItem;
+
+    const result = formatItemText(item, { mode: "modern" });
+
+    expect(result).not.toContain("[object Object]");
+    expect(result).toContain("Gain 1 Rage on Melee Hit (rune)");
+    expect(result).toContain(
+      '{ Fractured Prefix Modifier "Cremating" (Tier: 1) }\nAdds 29(25-29) to 43(37-45) Fire damage to Attacks'
+    );
+    expect(result).toContain(
+      '{ Crafted Suffix Modifier "of Fury" (Tier: 2) }\n29(25-29)% increased Critical Damage Bonus'
+    );
+  });
+
+  test("groups hybrid affixes, orders mods and maps ranges via extended.hashes", () => {
+    // Reproduces the in-game layout for the new object format: a hybrid affix
+    // (Stag's = evasion + life) is merged under one header with each line
+    // mapped to its own magnitude, prefixes precede suffixes ordered by affix
+    // index, fractured first / crafted last, and the "Bonded" rune line and
+    // Corrupted/Fractured ordering match the game.
+    const mod = (
+      description: string,
+      hash: string,
+      name: string,
+      tier: string,
+      magnitudes: Array<{ min: string; max: string }>,
+      flags?: Record<string, boolean>
+    ) => ({ description, hash, ...(flags ? { flags } : {}), mods: [{ name, tier, level: 1, magnitudes }] });
+
+    const item = {
+      rarity: "Rare",
+      name: "Empyrean Mitts",
+      typeLine: "Grand Bracers",
+      ilvl: 82,
+      corrupted: true,
+      fractured: true,
+      note: "~b/o 3 divine",
+      runeMods: [
+        "Gain 1 [Rage|Rage] on [Melee] [HitDamage|Hit]",
+        "[ShamanOnlyMods|Bonded]: 25% increased [Warcry|Warcry] Cooldown Recovery Rate",
+      ],
+      explicitMods: [
+        mod("Adds 29 to 43 [Fire] damage to [Attack|Attacks]", "stat.fractured.stat_1573130764", "Cremating", "P1", [{ min: "25", max: "29" }, { min: "37", max: "45" }], { fractured: true }),
+        mod("42% increased [Evasion|Evasion] Rating", "stat.explicit.stat_124859000", "Stag's", "P1", [{ min: "39", max: "42" }, { min: "42", max: "49" }]),
+        mod("Adds 3 to 65 [Lightning] damage to [Attack|Attacks]", "stat.explicit.stat_1754445556", "Electrocuting", "P1", [{ min: "1", max: "4" }, { min: "60", max: "71" }]),
+        mod("+42 to maximum Life", "stat.explicit.stat_3299347043", "Stag's", "P1", [{ min: "39", max: "42" }, { min: "42", max: "49" }]),
+        mod("11% increased [ItemRarity|Rarity of Items] found", "stat.explicit.stat_3917489142", "of Raiding", "S2", [{ min: "11", max: "14" }]),
+        mod("+35% to [Resistances|Cold Resistance]", "stat.explicit.stat_4220027924", "of the Polar Bear", "S3", [{ min: "31", max: "35" }]),
+        mod("29% increased [CriticalDamageBonus|Critical Damage Bonus]", "stat.crafted.stat_3556824919", "of Fury", "S2", [{ min: "25", max: "29" }], { crafted: true }),
+      ],
+      extended: {
+        mods: {},
+        hashes: {
+          explicit: [
+            ["explicit.stat_124859000", [1]],
+            ["explicit.stat_1754445556", [0]],
+            ["explicit.stat_3299347043", [1]],
+            ["explicit.stat_3917489142", [3]],
+            ["explicit.stat_4220027924", [2]],
+          ],
+          fractured: [["fractured.stat_1573130764", [0]]],
+          crafted: [["crafted.stat_3556824919", [0]]],
+        },
+      },
+    } as unknown as TradeItem;
+
+    const result = formatItemText(item, { mode: "modern" });
+
+    // Hybrid merged under one header, each line mapped to its own magnitude.
+    expect(result).toContain(
+      '{ Prefix Modifier "Stag\'s" (Tier: 1) }\n42(39-42)% increased Evasion Rating\n+42(42-49) to maximum Life'
+    );
+    // "Bonded" rune line dropped.
+    expect(result).not.toContain("Bonded");
+    // Mod order and Corrupted-before-Fractured exactly as in-game.
+    const modsBlock = result.slice(result.indexOf("Item Level: 82"));
+    expect(modsBlock).toBe(
+      [
+        "Item Level: 82",
+        "--------",
+        "Gain 1 Rage on Melee Hit (rune)",
+        "--------",
+        '{ Fractured Prefix Modifier "Cremating" (Tier: 1) }',
+        "Adds 29(25-29) to 43(37-45) Fire damage to Attacks",
+        '{ Prefix Modifier "Electrocuting" (Tier: 1) }',
+        "Adds 3(1-4) to 65(60-71) Lightning damage to Attacks",
+        '{ Prefix Modifier "Stag\'s" (Tier: 1) }',
+        "42(39-42)% increased Evasion Rating",
+        "+42(42-49) to maximum Life",
+        '{ Suffix Modifier "of the Polar Bear" (Tier: 3) }',
+        "+35(31-35)% to Cold Resistance",
+        '{ Suffix Modifier "of Raiding" (Tier: 2) }',
+        "11(11-14)% increased Rarity of Items found",
+        '{ Crafted Suffix Modifier "of Fury" (Tier: 2) }',
+        "29(25-29)% increased Critical Damage Bonus",
+        "--------",
+        "Corrupted",
+        "--------",
+        "Fractured Item",
+        "--------",
+        "Note: ~b/o 3 divine",
+      ].join("\n")
+    );
+  });
 });

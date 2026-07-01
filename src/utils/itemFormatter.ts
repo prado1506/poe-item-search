@@ -6,9 +6,18 @@
 import type {
   TradeItem,
   TradeItemExtendedMod,
+  TradeItemMod,
+  TradeItemModObject,
   TradeItemProperty,
   TradeItemRequirement,
 } from "@/types/tradeItem";
+
+type ModCategory =
+  | "implicit"
+  | "explicit"
+  | "fractured"
+  | "desecrated"
+  | "crafted";
 
 const CLASS_NORMALYZER: Record<string, string> = {
   "Quarterstaff": "Quarterstaves",
@@ -35,10 +44,77 @@ interface ModernModEntry {
  * Game format shows: "71% increased Armour, Evasion"
  * Pattern: [Key|Display] → Display
  */
-function stripBracketNotation(text: string): string {
+function stripBracketNotation(text: unknown): string {
+  // The trade API response is cast to TradeItem without runtime validation, so
+  // a mod/property entry can arrive as a non-string (seen on rune items).
+  // Coerce defensively instead of throwing "text.replace is not a function".
+  if (typeof text !== "string") {
+    return text == null ? "" : String(text);
+  }
   return text
     .replace(/\[([^\]|]+)\|([^\]]+)\]/g, "$2")
     .replace(/\[([^\]]+)\]/g, "$1");
+}
+
+/**
+ * The newer PoE2 trade API returns mod entries as objects instead of strings.
+ * These helpers normalize either form so the rest of the formatter is agnostic.
+ */
+function isModObject(mod: TradeItemMod): mod is TradeItemModObject {
+  return typeof mod === "object" && mod !== null;
+}
+
+/** The displayable mod text (still bracket-notated at this stage). */
+function getModText(mod: TradeItemMod): string {
+  return isModObject(mod) ? mod.description ?? "" : mod;
+}
+
+/** Affix metadata embedded in an object mod, shaped like extended.mods entries. */
+function getModMeta(mod: TradeItemMod): TradeItemExtendedMod | undefined {
+  if (!isModObject(mod)) return undefined;
+  const affix = mod.mods?.[0];
+  if (!affix) return undefined;
+  return {
+    name: affix.name ?? "",
+    tier: affix.tier ?? "",
+    level: affix.level ?? 0,
+    // A line can be backed by multiple affixes (hybrids); flatten their ranges.
+    magnitudes: (mod.mods ?? []).flatMap((entry) => entry.magnitudes ?? []),
+  };
+}
+
+/**
+ * The new format folds fractured/crafted/etc. mods into explicitMods, tagging
+ * the real category via flags and the stat hash. Derive it, falling back to the
+ * array the mod came from.
+ */
+function getModCategory(mod: TradeItemMod, fallback: ModCategory): ModCategory {
+  if (!isModObject(mod)) return fallback;
+  if (mod.flags?.fractured) return "fractured";
+  if (mod.flags?.crafted) return "crafted";
+
+  const hash = mod.hash ?? "";
+  if (hash.includes(".implicit.")) return "implicit";
+  if (hash.includes(".fractured.")) return "fractured";
+  if (hash.includes(".desecrated.")) return "desecrated";
+  if (hash.includes(".crafted.")) return "crafted";
+  if (hash.includes(".explicit.")) return "explicit";
+  return fallback;
+}
+
+/** True when any mod array uses the new object form (signals modern formatting). */
+function hasObjectMods(item: TradeItem): boolean {
+  const arrays = [
+    item.implicitMods,
+    item.explicitMods,
+    item.fracturedMods,
+    item.desecratedMods,
+    item.craftedMods,
+    item.runeMods,
+    item.enchantMods,
+    item.mutatedMods,
+  ];
+  return arrays.some((arr) => arr?.some(isModObject));
 }
 
 /**
@@ -171,8 +247,8 @@ function pluralizeItemClass(itemClass: string): string {
 /**
  * Format mods with their suffix type.
  */
-function formatMod(mod: string, suffix?: string): string {
-  const cleanMod = stripBracketNotation(mod);
+function formatMod(mod: TradeItemMod, suffix?: string): string {
+  const cleanMod = stripBracketNotation(getModText(mod));
   return suffix ? `${cleanMod} (${suffix})` : cleanMod;
 }
 
@@ -307,17 +383,29 @@ function formatModernHeader(
 }
 
 function buildModernModEntries(
-  category: "implicit" | "explicit" | "fractured" | "desecrated" | "crafted",
-  mods: string[] | undefined,
+  category: ModCategory,
+  mods: TradeItemMod[] | undefined,
   modData: TradeItemExtendedMod[] | undefined
 ) : ModernModEntry[] {
   if (!mods || mods.length === 0) {
     return [];
   }
 
-  const matchedMetadata = matchModsToMetadata(mods, modData);
+  // New object form: text, category and affix metadata are embedded per entry,
+  // so no fuzzy matching against extended.mods is needed.
+  if (mods.some(isModObject)) {
+    return mods.map((mod) => ({
+      category: getModCategory(mod, category),
+      rawMod: getModText(mod),
+      modData: getModMeta(mod),
+    }));
+  }
 
-  return mods.map((rawMod, index) => ({
+  // Legacy string form: match each mod to its parallel extended.mods metadata.
+  const stringMods = mods as string[];
+  const matchedMetadata = matchModsToMetadata(stringMods, modData);
+
+  return stringMods.map((rawMod, index) => ({
     category,
     rawMod,
     modData: matchedMetadata[index],
@@ -351,6 +439,161 @@ function pushModernModEntries(lines: string[], entries: ModernModEntry[]) {
 
     lines.push(formatModernHeader(entry.category, entry.modData));
     lines.push(rangedMod);
+  }
+}
+
+// --- Object-mod (newer API) grouped rendering -----------------------------
+// The newer API embeds affix metadata in each mod and exposes extended.hashes,
+// which lets us reproduce the in-game layout: hybrid affixes merged under one
+// header, magnitude ranges mapped correctly, and mods ordered prefix→suffix.
+
+type AffixKind = "implicit" | "prefix" | "suffix";
+
+interface GroupedAffix {
+  category: ModCategory;
+  kind: AffixKind;
+  affixIndex: number;
+  name?: string;
+  tier?: string;
+  rawLines: string[]; // bracket-stripped, NOT yet range-annotated
+  magnitudes: TradeItemExtendedMod["magnitudes"] | undefined;
+}
+
+const MOD_CATEGORY_ORDER: ModCategory[] = [
+  "implicit",
+  "fractured",
+  "explicit",
+  "desecrated",
+  "crafted",
+];
+
+/** Map each full stat hash ("stat.<cat>.stat_x") to its affix group index. */
+function buildAffixIndexLookup(item: TradeItem): Map<string, number> {
+  const lookup = new Map<string, number>();
+  const hashes = item.extended?.hashes;
+  if (!hashes) return lookup;
+
+  for (const entries of Object.values(hashes)) {
+    if (!entries) continue;
+    for (const [hash, indices] of entries) {
+      const groupId = Array.isArray(indices) ? indices[0] : undefined;
+      if (groupId === undefined || groupId === null) continue;
+      // Mod objects carry "stat." + this hash.
+      lookup.set(`stat.${hash}`, groupId);
+    }
+  }
+
+  return lookup;
+}
+
+function affixKindFromTier(tier: string | undefined, category: ModCategory): AffixKind {
+  if (category === "implicit") return "implicit";
+  if (tier && /^p/i.test(tier)) return "prefix";
+  if (tier && /^s/i.test(tier)) return "suffix";
+  return "prefix";
+}
+
+/** Collect mods into affix groups (merging hybrids that share an affix index). */
+function buildGroupedAffixes(item: TradeItem): GroupedAffix[] {
+  const lookup = buildAffixIndexLookup(item);
+  const arraysByCategory: Record<ModCategory, TradeItemMod[] | undefined> = {
+    implicit: item.implicitMods,
+    fractured: item.fracturedMods,
+    explicit: item.explicitMods,
+    desecrated: item.desecratedMods,
+    crafted: item.craftedMods,
+  };
+
+  const groups = new Map<string, GroupedAffix>();
+  const ordered: GroupedAffix[] = [];
+  let synthetic = 100; // fallback index for mods absent from extended.hashes
+
+  for (const fallbackCategory of MOD_CATEGORY_ORDER) {
+    const mods = arraysByCategory[fallbackCategory];
+    if (!mods) continue;
+
+    for (const mod of mods) {
+      const category = getModCategory(mod, fallbackCategory);
+      const meta = getModMeta(mod);
+      const text = stripBracketNotation(getModText(mod));
+      const hash = isModObject(mod) ? mod.hash ?? "" : "";
+      const known = lookup.has(hash);
+      const affixIndex = known ? lookup.get(hash)! : synthetic++;
+      // Merge only when the affix index is known (hybrids); otherwise keep
+      // each mod as its own group.
+      const key = known ? `${category}#${affixIndex}` : `u#${affixIndex}`;
+
+      const existing = groups.get(key);
+      if (existing) {
+        existing.rawLines.push(text);
+        continue;
+      }
+
+      const group: GroupedAffix = {
+        category,
+        kind: affixKindFromTier(meta?.tier, category),
+        affixIndex,
+        name: meta?.name || undefined,
+        tier: meta?.tier,
+        rawLines: [text],
+        magnitudes: meta?.magnitudes,
+      };
+      groups.set(key, group);
+      ordered.push(group);
+    }
+  }
+
+  return ordered;
+}
+
+function groupedAffixSortKey(group: GroupedAffix): number {
+  const kindRank = group.kind === "implicit" ? 0 : group.kind === "prefix" ? 1 : 2;
+  const categoryRank =
+    group.category === "fractured"
+      ? 0
+      : group.category === "explicit" || group.category === "implicit"
+      ? 1
+      : group.category === "desecrated"
+      ? 2
+      : 9; // crafted last within its kind
+  return kindRank * 100000 + categoryRank * 1000 + group.affixIndex;
+}
+
+function buildGroupedHeader(group: GroupedAffix): string {
+  const kindWord = group.kind === "suffix" ? "Suffix" : "Prefix";
+  let label: string;
+  if (group.kind === "implicit") {
+    label = "Implicit Modifier";
+  } else if (group.category === "fractured") {
+    label = `Fractured ${kindWord} Modifier`;
+  } else if (group.category === "crafted") {
+    label = `Crafted ${kindWord} Modifier`;
+  } else if (group.category === "desecrated") {
+    label = `Desecrated ${kindWord} Modifier`;
+  } else {
+    label = `${kindWord} Modifier`;
+  }
+
+  const name = group.name ? ` "${group.name}"` : "";
+  const normalizedTier = group.tier?.match(/(\d+)$/)?.[1] ?? group.tier;
+  const tier = normalizedTier ? ` (Tier: ${normalizedTier})` : "";
+
+  return `{ ${label}${name}${tier} }`;
+}
+
+function pushGroupedAffixes(lines: string[], groups: GroupedAffix[]) {
+  const sorted = [...groups].sort(
+    (left, right) => groupedAffixSortKey(left) - groupedAffixSortKey(right)
+  );
+
+  for (const group of sorted) {
+    // Apply ranges across the whole affix block so each stat line maps to its
+    // own magnitude (fixes hybrid affixes like evasion+life sharing one affix).
+    const block = group.rawLines.join("\n");
+    const ranged = addMagnitudeRanges(block, group.magnitudes);
+
+    lines.push(buildGroupedHeader(group));
+    lines.push(...ranged.split("\n"));
   }
 }
 
@@ -534,9 +777,14 @@ function formatItemTextModern(item: TradeItem): string {
   lines.push(SEPARATOR);
   lines.push(`Item Level: ${item.ilvl}`);
 
-  if (item.runeMods && item.runeMods.length > 0) {
+  // "Bonded" rune lines are a secondary socket effect the game omits from the
+  // item's own mod list, so drop them to match the in-game copy.
+  const runeMods = (item.runeMods ?? []).filter(
+    (mod) => !/^bonded\b/i.test(stripBracketNotation(getModText(mod)))
+  );
+  if (runeMods.length > 0) {
     lines.push(SEPARATOR);
-    for (const mod of item.runeMods) {
+    for (const mod of runeMods) {
       lines.push(formatMod(mod, "rune"));
     }
   }
@@ -558,35 +806,36 @@ function formatItemTextModern(item: TradeItem): string {
     lines.push(SEPARATOR);
   }
 
-  const modernModEntries = [
-    ...buildModernModEntries(
-      "implicit",
-      item.implicitMods,
-      item.extended?.mods?.implicit
-    ),
-    ...buildModernModEntries(
-      "fractured",
-      item.fracturedMods,
-      item.extended?.mods?.fractured
-    ),
-    ...buildModernModEntries(
-      "explicit",
-      item.explicitMods,
-      item.extended?.mods?.explicit
-    ),
-    ...buildModernModEntries(
-      "desecrated",
-      item.desecratedMods,
-      item.extended?.mods?.desecrated
-    ),
-    ...buildModernModEntries(
-      "crafted",
-      item.craftedMods,
-      undefined
-    ),
-  ];
+  if (hasObjectMods(item)) {
+    // Newer API: group hybrids, order by affix, map ranges via extended.hashes.
+    pushGroupedAffixes(lines, buildGroupedAffixes(item));
+  } else {
+    const modernModEntries = [
+      ...buildModernModEntries(
+        "implicit",
+        item.implicitMods,
+        item.extended?.mods?.implicit
+      ),
+      ...buildModernModEntries(
+        "fractured",
+        item.fracturedMods,
+        item.extended?.mods?.fractured
+      ),
+      ...buildModernModEntries(
+        "explicit",
+        item.explicitMods,
+        item.extended?.mods?.explicit
+      ),
+      ...buildModernModEntries(
+        "desecrated",
+        item.desecratedMods,
+        item.extended?.mods?.desecrated
+      ),
+      ...buildModernModEntries("crafted", item.craftedMods, undefined),
+    ];
 
-  pushModernModEntries(lines, modernModEntries);
+    pushModernModEntries(lines, modernModEntries);
+  }
 
   if (item.mutatedMods && item.mutatedMods.length > 0) {
     for (const mod of item.mutatedMods) {
@@ -594,14 +843,15 @@ function formatItemTextModern(item: TradeItem): string {
     }
   }
 
-  if (item.fractured) {
-    lines.push(SEPARATOR);
-    lines.push("Fractured Item");
-  }
-
+  // The game lists Corrupted before Fractured Item.
   if (item.corrupted) {
     lines.push(SEPARATOR);
     lines.push("Corrupted");
+  }
+
+  if (item.fractured) {
+    lines.push(SEPARATOR);
+    lines.push("Fractured Item");
   }
 
   if (item.flavourText && item.flavourText.length > 0) {
@@ -633,7 +883,8 @@ export function formatItemText(
       !!item.extended?.mods?.fractured ||
       !!item.extended?.mods?.desecrated;
 
-    if (!hasExtendedMods) {
+    // Newer API items carry no extended.mods but embed metadata in object mods.
+    if (!hasExtendedMods && !hasObjectMods(item)) {
       return formatItemTextLegacy(item);
     }
 

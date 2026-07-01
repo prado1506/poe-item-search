@@ -7,6 +7,7 @@
  */
 
 import { formatItemText } from "@/utils/itemFormatter";
+import { copyToClipboard } from "@/utils/copyToClipboard";
 import type { TradeItem, TradeFetchResponse } from "@/types/tradeItem";
 
 // Logger that forwards to content script via postMessage
@@ -18,6 +19,17 @@ const injectedLogger = {
   error: (message: string, data?: unknown) =>
     window.postMessage({ type: "poe-search-debug-log", payload: { level: "error", message: `[Interceptor] ${message}`, data } }, "*"),
 };
+
+// Error/DOMException have non-enumerable props that are lost when structured-
+// cloned over postMessage (rendering as `{}`). Flatten them into a plain object.
+function serializeError(err: unknown): unknown {
+  // Covers Error and DOMException (the latter is NOT an instanceof Error but
+  // carries the same fields); both have non-enumerable name/message/stack.
+  if (err instanceof Error || err instanceof DOMException) {
+    return { name: err.name, message: err.message, stack: (err as Error).stack };
+  }
+  return err;
+}
 
 // Trade API URL patterns
 const TRADE_SEARCH_PATTERN = /\/api\/trade2?\/search\/.+/;
@@ -532,7 +544,10 @@ function wireCopyButtons() {
 
       try {
         const text = formatItemText(item, { mode: "modern" });
-        await navigator.clipboard.writeText(text);
+        // Use shared helper: Clipboard API can reject (e.g. "Document is not
+        // focused" when DevTools holds focus, or a Permissions-Policy block),
+        // so fall back to execCommand during this click gesture.
+        await copyToClipboard(text);
 
         // Send log to content script for Sentry logging
         window.postMessage({
@@ -549,7 +564,9 @@ function wireCopyButtons() {
 
         injectedLogger.log("Copied item: " + (item.name || item.typeLine), item);
       } catch (err) {
-        injectedLogger.error("Failed to copy", err);
+        // Error/DOMException props are non-enumerable and become `{}` over
+        // postMessage; serialize them so the real cause is visible.
+        injectedLogger.error("Failed to copy", serializeError(err));
         showCopyFeedback(copyBtn, "Failed!");
       }
     });

@@ -416,4 +416,62 @@ describe("itemFormatter", () => {
       ].join("\n")
     );
   });
+
+  test("reverses quality inflation, separates implicit block and omits tier 0", () => {
+    // Item quality inflates the values the API reports (e.g. +20% attack mods),
+    // while magnitudes stay at base. The implicit is still a string with its
+    // metadata in extended.mods, and the crafted mod has tier 0 (no tier).
+    const obj = (
+      description: string,
+      hash: string,
+      name: string,
+      tier: string,
+      magnitudes: Array<{ min: string; max: string }>,
+      flags?: Record<string, boolean>
+    ) => ({ description, hash, ...(flags ? { flags } : {}), mods: [{ name, tier, level: 1, magnitudes }] });
+
+    const item = {
+      rarity: "Rare",
+      name: "Glyph Circle",
+      typeLine: "Ruby Ring",
+      ilvl: 82,
+      note: "~b/o 50 divine",
+      properties: [
+        { name: "Quality (Attack Modifiers)", values: [["+20%", 1]], displayMode: 0, type: 6 },
+      ],
+      implicitMods: ["+28% to [Resistances|Fire Resistance]"],
+      explicitMods: [
+        obj("Adds 28 to 43 [Cold] damage to [Attack|Attacks]", "stat.explicit.stat_4067062424", "Entombing", "P1", [{ min: "21", max: "24" }, { min: "32", max: "37" }]),
+        obj("10% increased [Attack] Speed", "stat.crafted.stat_681332047", "of the Stars", "S0", [{ min: "7", max: "9" }], { crafted: true }),
+      ],
+      extended: {
+        mods: { implicit: [{ name: "", tier: "", level: 10, magnitudes: [{ hash: "implicit.stat_3372524247", min: "20", max: "30" }] }] },
+        hashes: {
+          explicit: [["explicit.stat_4067062424", [0]]],
+          implicit: [["implicit.stat_3372524247", [0]]],
+          crafted: [["crafted.stat_681332047", [0]]],
+        },
+      },
+    } as unknown as TradeItem;
+
+    const result = formatItemText(item, { mode: "modern" });
+    const block = result.slice(result.indexOf("Item Level: 82"));
+
+    expect(block).toBe(
+      [
+        "Item Level: 82",
+        "--------",
+        "{ Implicit Modifier }",
+        "+28(20-30)% to Fire Resistance",
+        "--------",
+        '{ Prefix Modifier "Entombing" (Tier: 1) }',
+        // 28 -> 24, 43 -> 36 (quality reversed back into the base range)
+        "Adds 24(21-24) to 36(32-37) Cold damage to Attacks",
+        '{ Crafted Suffix Modifier "of the Stars" }', // tier 0 omitted
+        "9(7-9)% increased Attack Speed", // 10 -> 9
+        "--------",
+        "Note: ~b/o 50 divine",
+      ].join("\n")
+    );
+  });
 });

@@ -283,7 +283,19 @@ function buildHeaderLabel(
   return `${affix} Modifier`;
 }
 
-function addMagnitudeRanges(mod: string, magnitudes?: TradeItemExtendedMod["magnitudes"]): string {
+/** Item quality as a multiplier (e.g. "Quality: +20%" -> 1.2), or 1 if none. */
+function getQualityMultiplier(item: TradeItem): number {
+  const quality = item.properties?.find((prop) => /^Quality\b/i.test(prop.name));
+  const raw = quality?.values?.[0]?.[0];
+  const pct = raw ? parseFloat(String(raw).replace(/[^\d.-]/g, "")) : NaN;
+  return Number.isNaN(pct) ? 1 : 1 + pct / 100;
+}
+
+function addMagnitudeRanges(
+  mod: string,
+  magnitudes?: TradeItemExtendedMod["magnitudes"],
+  qualityMultiplier = 1
+): string {
   if (!magnitudes || magnitudes.length === 0) {
     return mod;
   }
@@ -295,11 +307,30 @@ function addMagnitudeRanges(mod: string, magnitudes?: TradeItemExtendedMod["magn
       return value;
     }
 
-    if (magnitude.min === magnitude.max && magnitude.min === value) {
-      return value;
+    // The API bakes item quality into the displayed value while the magnitude
+    // range stays at base. When the value lands outside the range it has been
+    // inflated by quality, so recover the base roll: shown = floor(base * q),
+    // therefore base = ceil(shown / q), clamped back into the range.
+    let base = value;
+    const num = parseFloat(value);
+    const min = parseFloat(magnitude.min);
+    const max = parseFloat(magnitude.max);
+    if (
+      qualityMultiplier > 1 &&
+      !Number.isNaN(num) &&
+      !Number.isNaN(min) &&
+      !Number.isNaN(max) &&
+      (num < min || num > max)
+    ) {
+      const reversed = Math.min(max, Math.max(min, Math.ceil(num / qualityMultiplier)));
+      base = (value.startsWith("+") ? "+" : "") + reversed;
     }
 
-    return `${value}(${magnitude.min}-${magnitude.max})`;
+    if (magnitude.min === magnitude.max && magnitude.min === base) {
+      return base;
+    }
+
+    return `${base}(${magnitude.min}-${magnitude.max})`;
   });
 }
 
@@ -424,7 +455,11 @@ function getModernAffixSortKey(entry: ModernModEntry): number {
   return affixRank + categoryRank;
 }
 
-function pushModernModEntries(lines: string[], entries: ModernModEntry[]) {
+function pushModernModEntries(
+  lines: string[],
+  entries: ModernModEntry[],
+  qualityMultiplier = 1
+) {
   if (entries.length === 0) {
     return;
   }
@@ -435,7 +470,11 @@ function pushModernModEntries(lines: string[], entries: ModernModEntry[]) {
 
   for (const entry of sortedEntries) {
     const cleanMod = stripBracketNotation(entry.rawMod);
-    const rangedMod = addMagnitudeRanges(cleanMod, entry.modData?.magnitudes);
+    const rangedMod = addMagnitudeRanges(
+      cleanMod,
+      entry.modData?.magnitudes,
+      qualityMultiplier
+    );
 
     lines.push(formatModernHeader(entry.category, entry.modData));
     lines.push(rangedMod);
@@ -508,13 +547,24 @@ function buildGroupedAffixes(item: TradeItem): GroupedAffix[] {
   const ordered: GroupedAffix[] = [];
   let synthetic = 100; // fallback index for mods absent from extended.hashes
 
+  const extendedMods = item.extended?.mods;
+
   for (const fallbackCategory of MOD_CATEGORY_ORDER) {
     const mods = arraysByCategory[fallbackCategory];
     if (!mods) continue;
 
-    for (const mod of mods) {
+    // Some mods (e.g. implicits) still arrive as strings with their metadata in
+    // extended.mods; match those so ranges/tier are recovered too.
+    const extendedForCategory =
+      extendedMods?.[fallbackCategory as keyof typeof extendedMods];
+    const stringMeta =
+      extendedForCategory && mods.some((mod) => !isModObject(mod))
+        ? matchModsToMetadata(mods.map(getModText), extendedForCategory)
+        : undefined;
+
+    mods.forEach((mod, modIndex) => {
       const category = getModCategory(mod, fallbackCategory);
-      const meta = getModMeta(mod);
+      const meta = isModObject(mod) ? getModMeta(mod) : stringMeta?.[modIndex];
       const text = stripBracketNotation(getModText(mod));
       const hash = isModObject(mod) ? mod.hash ?? "" : "";
       const known = lookup.has(hash);
@@ -526,7 +576,7 @@ function buildGroupedAffixes(item: TradeItem): GroupedAffix[] {
       const existing = groups.get(key);
       if (existing) {
         existing.rawLines.push(text);
-        continue;
+        return;
       }
 
       const group: GroupedAffix = {
@@ -540,7 +590,7 @@ function buildGroupedAffixes(item: TradeItem): GroupedAffix[] {
       };
       groups.set(key, group);
       ordered.push(group);
-    }
+    });
   }
 
   return ordered;
@@ -576,12 +626,18 @@ function buildGroupedHeader(group: GroupedAffix): string {
 
   const name = group.name ? ` "${group.name}"` : "";
   const normalizedTier = group.tier?.match(/(\d+)$/)?.[1] ?? group.tier;
-  const tier = normalizedTier ? ` (Tier: ${normalizedTier})` : "";
+  // Tier 0 means "no tier" (e.g. crafted mods); the game omits it.
+  const tier =
+    normalizedTier && normalizedTier !== "0" ? ` (Tier: ${normalizedTier})` : "";
 
   return `{ ${label}${name}${tier} }`;
 }
 
-function pushGroupedAffixes(lines: string[], groups: GroupedAffix[]) {
+function pushGroupedAffixes(
+  lines: string[],
+  groups: GroupedAffix[],
+  qualityMultiplier = 1
+) {
   const sorted = [...groups].sort(
     (left, right) => groupedAffixSortKey(left) - groupedAffixSortKey(right)
   );
@@ -590,7 +646,7 @@ function pushGroupedAffixes(lines: string[], groups: GroupedAffix[]) {
     // Apply ranges across the whole affix block so each stat line maps to its
     // own magnitude (fixes hybrid affixes like evasion+life sharing one affix).
     const block = group.rawLines.join("\n");
-    const ranged = addMagnitudeRanges(block, group.magnitudes);
+    const ranged = addMagnitudeRanges(block, group.magnitudes, qualityMultiplier);
 
     lines.push(buildGroupedHeader(group));
     lines.push(...ranged.split("\n"));
@@ -802,14 +858,30 @@ function formatItemTextModern(item: TradeItem): string {
     (item.explicitMods && item.explicitMods.length > 0) ||
     (item.desecratedMods && item.desecratedMods.length > 0);
 
-  if (hasModHeaders) {
-    lines.push(SEPARATOR);
-  }
+  // Item quality inflates the mod values reported by the API; used to recover
+  // the base (in-game) roll when a value falls outside its magnitude range.
+  const qualityMultiplier = getQualityMultiplier(item);
 
   if (hasObjectMods(item)) {
     // Newer API: group hybrids, order by affix, map ranges via extended.hashes.
-    pushGroupedAffixes(lines, buildGroupedAffixes(item));
+    const groups = buildGroupedAffixes(item);
+    const implicitGroups = groups.filter((g) => g.kind === "implicit");
+    const otherGroups = groups.filter((g) => g.kind !== "implicit");
+
+    // The game shows the implicit block separated from the explicit block.
+    if (implicitGroups.length > 0) {
+      lines.push(SEPARATOR);
+      pushGroupedAffixes(lines, implicitGroups, qualityMultiplier);
+    }
+    if (otherGroups.length > 0) {
+      lines.push(SEPARATOR);
+      pushGroupedAffixes(lines, otherGroups, qualityMultiplier);
+    }
   } else {
+    if (hasModHeaders) {
+      lines.push(SEPARATOR);
+    }
+
     const modernModEntries = [
       ...buildModernModEntries(
         "implicit",
@@ -834,7 +906,7 @@ function formatItemTextModern(item: TradeItem): string {
       ...buildModernModEntries("crafted", item.craftedMods, undefined),
     ];
 
-    pushModernModEntries(lines, modernModEntries);
+    pushModernModEntries(lines, modernModEntries, qualityMultiplier);
   }
 
   if (item.mutatedMods && item.mutatedMods.length > 0) {
